@@ -1,0 +1,69 @@
+%main.container
+  #slider.carousel.slide{'data-ride': "carousel"}
+    %ol.carousel-indicators
+      %li.active{'data-target': "#slider", 'data-slide-to': "0"}
+      %li{'data-target': "#slider", 'data-slide-to': "1"}
+      %li{'data-target': "#slider", 'data-slide-to': "2"}
+    .carousel-inner{role: "listbox"}
+      -@new_books.each_with_index do |book, index|
+        .item{class: ("active" if index == 0)}
+          .row
+            .col-sm-5
+              .general-img-wrap
+                =image_tag( book.image_name, alt: "design-book", class: "img-shadow general-thumbnail-img")
+            .col-sm-7
+              .mb-60
+                %h1
+                  =book.title
+                %p.lead
+                  =t('homepage.book_description')
+                %p.lead.small
+                  =t('homepage.book_authors')
+                .general-align
+                  = link_to book_path(book) do
+                    %button.btn{ class: ('disabled' if book.quantity.zero?) }
+                      =t('homepage.buy_btn')
+    %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
+      %span.icon-prev{'aria-hidden': "true"}
+      %span.sr-only
+        =t('homepage.carules.previous')
+    %a.right.carousel-control{href: "#slider", role: "button", 'data-slide': "next"}
+      %span.icon-next{'aria-hidden': "true"}
+      %span.sr-only
+        =t('homepage.carules.next')
+.container
+  .jumbotron.text-center.mb-0
+    %h2.h1
+      =t('homepage.middle_part.title')
+    .mb-res-50
+      %p
+        =t('homepage.middle_part.info')
+    = link_to 'Get Started', books_path, class:"btn btn-default"
+  .mb-35
+    %h3
+      =t('homepage.best_sellers.title')
+    .row
+      = render partial: 'books/partials/book', collection: @best_sellers, as: :book
+    -# -@best_sellers.each_with_index do |book, index|
+    -#   .col-sm-6.col-md-3
+    -#     .general-thumb-wrap
+    -#       .thumbnail.general-thumbnail
+    -#         =image_tag( book.image_name, alt: "design-book", class: "img-shadow general-thumbnail-img")
+    -#         .thumb-hover
+    -#           .general-thumb-link-wrap
+    -#             = link_to book_path(book), class: 'thumb-hover-link' do
+    -#               %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+    -#             = link_to order_items_path(book_id: book.id, quantity: OrderItemDecorator::MINIMUM_QUONTITY), remote: true, method: :post, class: 'thumb-hover-link' do
+    -#               %i.fa.fa-shopping-cart.thumb-icon
+    -#     .mb-35
+    -#       .clearfix
+    -#         %p.pull-right.font-16.in-gold-500
+    -#           = t(:'book.price', price: book.price)
+    -#         %p.title.mr-55
+    -#           = book.description.first(100)
+    -#       %span.divider-sm
+    -#       %p.lead.small
+    -#         -# = book.authors_all
+    -#         - book.authors.each do |author|
+    -#           =author.name
+    -#           %br/

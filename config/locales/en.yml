@@ -1,33 +1,38 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  homepage:
+    title_h1: 'Real-Life Responsive Web Design'
+    book_description: 'Smart front-end techniques and design patterns derived from real-life responsive projects'
+    book_authors: 'Vitaly Friedman, Daniel Mall,Vitaly Friedman'
+    buy_btn: 'Buy Now'
+    carules:
+      previous: 'Previous'
+      next: 'Next'
+    middle_part:
+      title: 'Welcome to our amazing Bookstore!'
+      info: 'We pore through hundreds of new books each month and select the five best we can find to share with our members.'
+      start_btn: 'Get Started'
+    best_sellers:
+      title: 'Best Sellers'
+  catalog:
+    title: 'Catalog'
+    all_categories: 'All'
+    categories_title_xs: 'Filter by category'
+    filters_title_xs: 'Sort by'
+  book:
+    material_title: 'Materials'
+    materials: "%{material}"
+    params: "H:%{height}\" x W: %{width}\" x D: %{depth}"
+    dimensions: 'Dimensions'
+    etc: '...'
+    release: 'Year of publication'
+    price: "€ %{price}"
+    description_title: 'Description'
+    read_more: 'Read more'
+    review: 'Write a Review'
+    score: 'Score'
+  review:
+    title: 'Title'
+    body_field: 'Review'
+    btn_name: 'Post'
+    reviews_title: 'Reviews (%{amount})'
+    date_review: "%{day}/%{month}/%{year}"

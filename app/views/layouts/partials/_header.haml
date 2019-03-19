@@ -1,0 +1,51 @@
+%header.navbar.navbar-default
+  .container
+    .navbar-header
+      %button.navbar-toggle.pull-left{"data-target" => "#navbar", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand Bookstore
+      %a.shop-link.pull-right.visible-xs{href: "#"}
+        %span.shop-icon
+          %span.shop-quantity 3
+    %a.shop-link.pull-right.hidden-xs{href: "#"}
+      %span.shop-icon
+        %span.shop-quantity 3
+    #navbar.navbar-collapse.collapse.pl-30{"aria-expanded" => "false"}
+      .visible-xs
+        %button.close{"aria-label" => "Close", type: "button"}
+          %span{"aria-hidden" => "true"} ×
+        %ul.nav.navbar-nav
+          %li
+            %a{href: "/"} Home
+          %li
+            %a{"aria-controls" => "menu", "aria-expanded" => "false", "data-toggle" => "collapse", href: "#menu", type: "button"} Shop
+            %ul#menu.collapse.list-unstyled.pl-30.mb-10{"aria-expanded" => "false"}
+              %li
+                %a.collapse-link{href: "#"} Mobile development
+              %li
+                %a.collapse-link{href: "#"} Photo
+              %li
+                %a.collapse-link{href: "#"} Web design
+          %li
+            %a{href: "#"} My account
+      .hidden-xs
+        %ul.nav.navbar-nav
+          %li
+            %a{href: "/"} Home
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", href: "#", role: "button"} Shop
+            %ul.dropdown-menu
+              %li
+                %a{href: "#"} Mobile development
+              %li
+                %a{href: "#"} Photo
+              %li
+                %a{href: "#"} Web design
+              %li.divider{role: "separator"}
+              %li
+                %a{href: "#"} Log out
+          %li
+            %a{href: "#"} My account
