@@ -215,7 +215,7 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
     sexp_processor (4.11.0)
-    simple_form (4.1.0)
+    simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     spring (2.0.2)
@@ -258,29 +258,29 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aasm
+  aasm (~> 5.0.1)
   bootsnap (>= 1.1.0)
-  bootstrap-sass
+  bootstrap-sass (~> 3.3.7)
   byebug
   capybara
   chromedriver-helper
   coffee-rails (~> 4.2)
-  devise
-  draper
-  faker
+  devise (~> 4.6.1)
+  draper (~> 3.0.1)
+  faker (~> 1.9.3)
   font-awesome-rails
   haml-rails (~> 1.0)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
-  pagy
+  pagy (~> 2.0.0)
   pg (>= 0.18, < 2.0)
-  presenter-rails
+  presenter-rails (~> 1.0.0)
   pry
   puma (~> 3.11)
   rails (~> 5.2.2)
   sass-rails (~> 5.0)
   selenium-webdriver
-  simple_form
+  simple_form (~> 4.0.1)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5.2.0)

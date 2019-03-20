@@ -6,21 +6,20 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
-gem 'pagy'
-gem 'devise'
-gem 'aasm'
-gem 'draper'
+gem 'pagy', '~> 2.0.0'
+gem 'devise', '~> 4.6.1'
+gem 'aasm', '~> 5.0.1'
+gem 'draper', '~> 3.0.1'
 gem "font-awesome-rails"
-gem 'simple_form'
+gem 'simple_form', '~> 4.0.1'
 gem 'sass-rails', '~> 5.0'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.7'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5.2.0'
 gem 'jbuilder', '~> 2.5'
 gem "haml-rails", "~> 1.0"
-gem 'presenter-rails'
-gem 'faker', require: false
+gem 'presenter-rails', '~> 1.0.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -36,6 +35,7 @@ gem 'faker', require: false
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  gem 'faker', '~> 1.9.3', require: false
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
