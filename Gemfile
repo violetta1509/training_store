@@ -22,7 +22,7 @@ gem "haml-rails", "~> 1.0"
 gem 'presenter-rails', '~> 1.0.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'webpacker', '~> 4.x'
-gem 'yui-compressor'
+# gem 'yui-compressor'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
