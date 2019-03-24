@@ -9,6 +9,6 @@ module BookStore
   class Application < Rails::Application
     config.load_defaults 5.2
     config.autoload_paths << Rails.root.join('app/presenters')
-    config.assets.initialize_on_precompile = false
+    
   end
 end
