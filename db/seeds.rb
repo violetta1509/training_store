@@ -1,5 +1,4 @@
 require 'faker'
-require 'pry'
 def random_image
   "/img/#{rand(1..16)}.jpg"
 end

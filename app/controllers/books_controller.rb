@@ -1,4 +1,3 @@
-require 'pry'
 class BooksController < ApplicationController
   BOOKS_PER_PAGE = 12
   include Pagy::Backend

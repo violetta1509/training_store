@@ -1,4 +1,3 @@
-require 'pry'
 class CreateOrderItemService
   def initialize(order, params)
     @order = order

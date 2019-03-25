@@ -1,4 +1,3 @@
-require 'pry'
 class OrderItemsController < ApplicationController
   def create
     order_item = CreateOrderItemService.new(get_current_order, params.permit(:quantity, :book_id)).call

@@ -22,6 +22,7 @@ gem "haml-rails", "~> 1.0"
 gem 'presenter-rails', '~> 1.0.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'webpacker', '~> 4.x'
+gem 'faker', '~> 1.9.3', require: false
 # gem 'yui-compressor'
 
 # Use Redis adapter to run Action Cable in production
@@ -39,8 +40,8 @@ gem 'webpacker', '~> 4.x'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  gem 'faker', '~> 1.9.3', require: false
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -50,7 +51,6 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'pry'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 

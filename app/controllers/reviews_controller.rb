@@ -1,4 +1,3 @@
-require 'pry'
 class ReviewsController < ApplicationController
   def create
     @review = AddReviewService.new(permit_params).call

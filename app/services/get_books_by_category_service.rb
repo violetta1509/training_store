@@ -1,4 +1,3 @@
-require 'pry'
 class GetBooksByCategoryService
   def initialize(category_id, current_filter)
     @filter = current_filter
