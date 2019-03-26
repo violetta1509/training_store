@@ -18,7 +18,7 @@ BOOK_IMGS = [
   'https://gdurl.com/mscc'
   ]
 def random_image
-  BOOK_IMGS[rand(1..16)]
+  BOOK_IMGS[rand(1...16)]
 end
 
 30.times { Author.create!(name: Faker::Name.name) }
