@@ -1,6 +1,24 @@
 require 'faker'
+BOOK_IMGS = [
+  'https://gdurl.com/gphg',
+  'https://gdurl.com/CZcD',
+  'https://gdurl.com/0BSY',
+  'https://gdurl.com/525U',
+  'https://gdurl.com/hUyY',
+  'https://gdurl.com/ucaQ',
+  'https://gdurl.com/tiFk',
+  'https://gdurl.com/s4xX',
+  'https://gdurl.com/I1Jz',
+  'https://gdurl.com/XoSU',
+  'https://gdurl.com/pAD8',
+  'https://gdurl.com/N4gb',
+  'https://gdurl.com/p15l',
+  'https://gdurl.com/PYWT',
+  'https://gdurl.com/hf_k',
+  'https://gdurl.com/mscc'
+  ]
 def random_image
-  "/img/#{rand(1..16)}.jpg"
+  BOOK_IMGS[rand(1..16)]
 end
 
 30.times { Author.create!(name: Faker::Name.name) }
@@ -26,4 +44,3 @@ categories = Category.all
                     image_name: random_image)
   book.authors << Author.all.sample(rand(1..2))
 end
-['https://gdurl.com/gphg', 'https://gdurl.com/CZcD']
