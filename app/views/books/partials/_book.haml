@@ -15,6 +15,7 @@
       = t(:'book.price', price: book.price)
     %span.divider-sm
     %p.lead.small
+      -# = book.authors_all
       -book.authors.each do |author|
         =author.name
         %br/
