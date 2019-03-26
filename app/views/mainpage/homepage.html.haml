@@ -10,11 +10,12 @@
           .row
             .col-sm-5
               .general-img-wrap
-                =image_tag( book.image_name, alt: "design-book", class: "img-shadow general-thumbnail-img")
+                =image_tag( 'https://gdurl.com/CZcD', alt: "design-book", class: "img-shadow general-thumbnail-img")
+                -# =image_tag( book.image_name, alt: "design-book", class: "img-shadow general-thumbnail-img")
             .col-sm-7
               .mb-60
                 %h1
-                  =book.title
+                  = book.title
                 %p.lead
                   =t('homepage.book_description')
                 %p.lead.small

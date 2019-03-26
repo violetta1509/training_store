@@ -26,3 +26,4 @@ categories = Category.all
                     image_name: random_image)
   book.authors << Author.all.sample(rand(1..2))
 end
+['https://gdurl.com/gphg', 'https://gdurl.com/CZcD']
