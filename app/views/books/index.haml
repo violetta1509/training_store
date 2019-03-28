@@ -4,13 +4,13 @@
   .hidden-xs.clearfix
     .dropdowns.pull-right
       .dropdown.width-240
-        =render partial: 'books/partials/dropdown_filters'
+        = render partial: 'books/partials/dropdown_filters'
     %ul.list-inline.pt-10.mb-25.mr-240
       %li.mr-35
         = link_to books_path, class: 'filter-link' do
           = t(:'catalog.all_categories')
           %span.badge.general-badge
-            = @books_all
+            = @book_presenter.all_books_quantity
       - @categories.each do |category|
         %li.mr-35
           = link_to books_path(category: category), class: 'filter-link' do
@@ -32,10 +32,9 @@
     %p.lead.small.mb-10
       = t(:'catalog.filters_title_xs')
     .dropdown
-      =render partial: 'books/partials/dropdown_filters'
+      = render partial: 'books/partials/dropdown_filters'
   .mb-120
     .row
       = render partial: 'books/partials/book', collection: @books, as: :book
     .text-center
       = pagy_bootstrap_nav(@pagy).html_safe
-      -# %button.btn.btn-primary View More

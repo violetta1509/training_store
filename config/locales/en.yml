@@ -1,6 +1,13 @@
 en:
   header:
     shop: 'Shop'
+    account: 'My account'
+    home: 'Home'
+    logout: 'Logout'
+    sign_up: 'Sign up'
+    login: 'Login'
+    orders: 'Orders'
+    settings: 'Settings'
   homepage:
     title_h1: 'Real-Life Responsive Web Design'
     book_description: 'Smart front-end techniques and design patterns derived from real-life responsive projects'

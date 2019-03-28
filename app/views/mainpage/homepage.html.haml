@@ -6,23 +6,23 @@
       %li{'data-target': "#slider", 'data-slide-to': "2"}
     .carousel-inner{role: "listbox"}
       - @new_books.each_with_index do |book, index|
-        .item{class: ("active" if index == 0)}
+        .item{ class: ("active" if index == 0) }
           .row
             .col-sm-5
               .general-img-wrap
-                =image_tag( book.image_name, alt: "design-book", class: "img-shadow general-thumbnail-img")
+                = image_tag( book.image_name, alt: "design-book", class: "img-shadow general-thumbnail-img")
             .col-sm-7
               .mb-60
                 %h1
                   = book.title
                 %p.lead
-                  =t('homepage.book_description')
+                  = t('homepage.book_description')
                 %p.lead.small
-                  =t('homepage.book_authors')
+                  = t('homepage.book_authors')
                 .general-align
                   = link_to book_path(book) do
                     %button.btn{ class: ('disabled' if book.quantity.zero?) }
-                      =t('homepage.buy_btn')
+                      = t('homepage.buy_btn')
     %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
       %span.icon-prev{'aria-hidden': "true"}
       %span.sr-only
@@ -34,13 +34,13 @@
 .container
   .jumbotron.text-center.mb-0
     %h2.h1
-      =t('homepage.middle_part.title')
+      = t('homepage.middle_part.title')
     .mb-res-50
       %p
-        =t('homepage.middle_part.info')
+        = t('homepage.middle_part.info')
     = link_to 'Get Started', books_path, class:"btn btn-default"
   .mb-35
     %h3
-      =t('homepage.best_sellers.title')
+      = t('homepage.best_sellers.title')
     .row
       = render partial: 'books/partials/book', collection: @best_sellers, as: :book

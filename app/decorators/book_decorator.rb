@@ -3,10 +3,6 @@ class BookDecorator < Draper::Decorator
   DESCRIPTION_IN_RANGE = 100
   RAITING_STARS = [5, 4, 3, 2, 1]
 
-  def authors_all
-    authors.map(&:name).join(', ')
-  end
-
   def short_description
     description.first(DESCRIPTION_IN_RANGE)
   end
@@ -21,5 +17,9 @@ class BookDecorator < Draper::Decorator
 
   def all_reviews
     @reviews ||= reviews
+  end
+
+  def authors_all
+    book.authors.map(&:name).join(', ')
   end
 end

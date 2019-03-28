@@ -1,9 +1,9 @@
 class BooksController < ApplicationController
   BOOKS_PER_PAGE = 12
   include Pagy::Backend
-  before_action :default_selection, only: [:index]
+  before_action :default_selection, only: :index
   decorates_assigned :book
-  
+
   def index
     @pagy, @books = pagy(GetBooksByCategoryService.new(params[:category], @current_filter).call, items: BOOKS_PER_PAGE)
   end
@@ -16,7 +16,7 @@ class BooksController < ApplicationController
 
   def default_selection
     @current_filter = SelectionByFilterService.new(params[:selection]).call
-    @books_all = Book.all.count
+    @book_presenter = BookPresenter.new(self)
     @categories = Category.all
     @all = params[:category] ? nil : true
   end
