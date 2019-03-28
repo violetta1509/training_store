@@ -7,7 +7,7 @@
         %span.icon-bar
         %span.icon-bar
       = link_to 'Bookstore', root_path, class: 'navbar-brand'
-    - if user_signed_in?
+    - if user_signed_in? && current_user.order
       %a.shop-link.pull-right.visible-xs{href: "#"}
         %span.shop-icon
           %span.shop-quantity

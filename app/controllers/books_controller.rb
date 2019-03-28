@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   BOOKS_PER_PAGE = 12
   include Pagy::Backend
   before_action :default_selection, only: :index
+  before_action :set_header
   decorates_assigned :book
 
   def index
@@ -13,6 +14,10 @@ class BooksController < ApplicationController
   end
 
   private
+
+  def set_header
+    @header = HeaderPresenter.new(self)
+  end
 
   def default_selection
     @current_filter = SelectionByFilterService.new(params[:selection]).call

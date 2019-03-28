@@ -6,9 +6,6 @@ class OrderItemsController < ApplicationController
     redirect_to books_path
   end
 
-  def update
-  end
-
   private
 
   def set_flash(order_item)
