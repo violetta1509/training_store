@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'mainpage#homepage'
+  root 'main_page#homepage'
 
   resources :order_items
   resources :posts

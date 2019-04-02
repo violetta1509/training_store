@@ -17,6 +17,12 @@ BOOK_IMGS = [
   'https://gdurl.com/hf_k',
   'https://gdurl.com/mscc'
   ]
+EXTEND_BOOK_IMAGES = [
+  'https://gdurl.com/SjK8',
+  'https://gdurl.com/pMsz',
+  'https://gdurl.com/EnLT',
+  'https://gdurl.com/ep-L'
+  ]
 def random_image
   BOOK_IMGS[rand(1...16)]
 end

@@ -1,7 +1,7 @@
 class BookDecorator < Draper::Decorator
   delegate_all
   DESCRIPTION_IN_RANGE = 100
-  RAITING_STARS = [5, 4, 3, 2, 1]
+  RAITING_STARS = (1..5).to_a.reverse
 
   def short_description
     description.first(DESCRIPTION_IN_RANGE)

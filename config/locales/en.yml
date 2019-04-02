@@ -1,4 +1,7 @@
 en:
+  order_items:
+    added_to_card: 'Added to card'
+    disabled_add_to_card: 'Cann`t add to card'
   header:
     shop: 'Shop'
     account: 'My account'
@@ -28,6 +31,7 @@ en:
     categories_title_xs: 'Filter by category'
     filters_title_xs: 'Sort by'
   book:
+    back_button: 'Back to results'
     material_title: 'Materials'
     materials: "%{material}"
     params: "H:%{height}\" x W: %{width}\" x D: %{depth}"
@@ -45,3 +49,5 @@ en:
     btn_name: 'Post'
     reviews_title: 'Reviews (%{amount})'
     date_review: "%{day}/%{month}/%{year}"
+    saved_comment: 'Your comment will be show after review'
+    wrong_comment: 'Your comment has not been saved'

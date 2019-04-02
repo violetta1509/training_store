@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   decorates_assigned :book
 
   def index
-    @pagy, @books = pagy(GetBooksByCategoryService.new(params[:category], @current_filter).call, items: BOOKS_PER_PAGE)
+    @pagy, @books = pagy(GetBooksByCategoryService.new(@current_category, @current_filter).call, items: BOOKS_PER_PAGE)
   end
 
   def show
@@ -23,6 +23,6 @@ class BooksController < ApplicationController
     @current_filter = SelectionByFilterService.new(params[:selection]).call
     @book_presenter = BookPresenter.new(self)
     @categories = Category.all
-    @all = params[:category] ? nil : true
+    @current_category = params[:category]
   end
 end

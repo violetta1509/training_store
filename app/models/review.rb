@@ -6,7 +6,7 @@ class Review < ApplicationRecord
     approved: 1
   }
 
-  aasm :status, column: :status, enum: true do
+  aasm :status, column: :status do
     state :unapproved, initial: true
     state :approved
 

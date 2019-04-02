@@ -12,6 +12,6 @@ class GetBooksByCategoryService
   private
 
   def make_selection(entities)
-    entities.selection_by_order(SelectionByFilterService::FILTERS.key(@filter).to_s)
+    entities.selection_by_order(SelectionByFilterService::FILTERS.key(@filter))
   end
 end

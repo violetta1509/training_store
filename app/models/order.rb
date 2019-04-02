@@ -13,7 +13,7 @@ class Order < ApplicationRecord
     canceled: 4
   }
 
-  aasm :status, column: :status, enum: true do
+  aasm :status, column: :status do
     state :in_progress, initial: true
     state :in_queue
     state :shiped

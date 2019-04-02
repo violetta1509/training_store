@@ -1,14 +1,14 @@
 class BooksBestSellersService
-  def initialize(number)
-    @amount_books_in_category = number
+  def call(amount_books)
+    @best_sellers = []
+    categories = [*1..Category.all.count]
+    categories.map(&method(:best_books))
+    @best_sellers.flatten
   end
 
-  def call
-    best_sellers = []
-    numbers_array = [*1..Category.all.count]
-    numbers_array.each do |num|
-      best_sellers << Category.find(num).books.best_sellers.first(@amount_books_in_category)
-    end
-      best_sellers = best_sellers.flatten
+  private
+
+  def best_books(category_id)
+    @best_sellers << Category.find(category_id).books.best_sellers.first
   end
 end

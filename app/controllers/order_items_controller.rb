@@ -1,6 +1,6 @@
 class OrderItemsController < ApplicationController
   def create
-    order_item = CreateOrderItemService.new(get_current_order, params.permit(:quantity, :book_id)).call
+    order_item = CreateOrderItemService.new.call(get_current_order, order_item_params)
     order_item ? set_flash(order_item) : save_guest
 
     redirect_to books_path
@@ -8,8 +8,12 @@ class OrderItemsController < ApplicationController
 
   private
 
+  def order_item_params
+    params.permit(:quantity, :book_id)
+  end
+
   def set_flash(order_item)
-    order_item.save ? flash[:success] = 'Added to card' : flash[:danger] = 'Cann`t add to card'
+    order_item.save ? flash[:success] = t(:'order_items.added_to_card') : flash[:danger] = t(:'order_items.disabled_add_to_card')
   end
 
   def save_guest

@@ -4,4 +4,4 @@
 %ul.dropdown-menu
   -SelectionByFilterService::FILTERS.each do |filter, filter_name|
     %li
-      = link_to filter_name, url_for(selection: filter, category: @all ? nil : @books.first.category_id)
+      = link_to filter_name, url_for(selection: filter, category: @current_category)

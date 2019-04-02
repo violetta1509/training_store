@@ -1,4 +1,4 @@
-class Mainpage < Draper::Decorator
+class MainPage < Draper::Decorator
   delegate_all
 
   def authors_all
