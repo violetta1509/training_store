@@ -8,6 +8,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'pagy', '~> 2.0.0'
 gem 'devise', '~> 4.6.1'
+gem 'omniauth-facebook', '~> 5.0.0'
 gem 'aasm', '~> 5.0.1'
 gem 'draper', '~> 3.0.1'
 gem "font-awesome-rails"
