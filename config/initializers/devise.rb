@@ -16,7 +16,8 @@ Devise.setup do |config|
   config.reset_password_within = 6.hours
   config.sign_out_via = :delete
 
-  Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :facebook, ENV['538751119984524'], ENV['8f939dbb1d710de3632051cfb5af6fe2'], scope: 'email'
-  end
+  config.omniauth :facebook, "538751119984524", "8f939dbb1d710de3632051cfb5af6fe2", callback_url: "http://localhost:3000/users/auth/facebook/callback"
+  # Rails.application.config.middleware.use OmniAuth::Builder do
+  #   provider :facebook, ENV['538751119984524'], ENV['8f939dbb1d710de3632051cfb5af6fe2'], scope: 'email'
+  # end
 end
