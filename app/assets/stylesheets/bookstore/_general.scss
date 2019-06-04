@@ -3,6 +3,46 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+.images {
+  padding: 10px;
+}
+.minimized {
+  width: 120px;
+  height: 60px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+.minimized:hover {
+  border: 1px solid yellow;
+}
+
+#magnify {
+  display: none;
+  position: fixed;
+  max-width: 600px;
+  height: auto;
+  z-index: 9999;
+}
+
+#magnify img {
+  width: 100%;
+}
+
+#overlay {
+  display: none;
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+  z-index: 9990;
+}
+#close-popup {
+  width: 30px;
+  height: 30px;
+}
 main {
   flex-grow: 1;
 }

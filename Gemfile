@@ -24,6 +24,9 @@ gem 'presenter-rails', '~> 1.0.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'webpacker', '~> 4.x'
 gem 'faker', '~> 1.9.3', require: false
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick', '~> 4.9.3'
+
 # gem 'yui-compressor'
 
 # Use Redis adapter to run Action Cable in production

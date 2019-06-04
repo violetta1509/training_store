@@ -3,15 +3,15 @@
     %i.fa.fa-long-arrow-left.mr-15
     = t(:'book.back_button')
   .row
-    .col-sm-6
+    .col-sm-6.clearfix
       .product-gallery
         .mb-20
           = image_tag( book.image_name, alt: 'design-book', class: 'img-responsive')
-        .images.clearfix
-          = image_tag( 'https://gdurl.com/pMsz', alt: 'design-book', class: 'img-link')
-          = image_tag( 'https://gdurl.com/ep-L', alt: 'design-book', class: 'img-link')
-          = image_tag( 'https://gdurl.com/EnLT', alt: 'design-book', class: 'img-link')
-          = image_tag( 'https://gdurl.com/SjK8', alt: 'design-book', class: 'img-link')
+          .images.clearfix
+            %img.minimized{alt: 'design-book', src: 'https://gdurl.com/SjK8', class: 'img-link'}/
+            %img.minimized{alt: 'design-book', src: 'https://gdurl.com/pMsz', class: 'img-link'}/
+            %img.minimized{alt: 'design-book', src: 'https://gdurl.com/ep-L', class: 'img-link'}/
+            %img.minimized{alt: 'design-book', src: 'https://gdurl.com/EnLT', class: 'img-link'}/
     .col-sm-6
       %h1.mt-res-0
         = book.title
