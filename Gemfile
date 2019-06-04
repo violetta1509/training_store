@@ -54,9 +54,13 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rubocop', '~> 0.71.0', require: false
+  gem 'rubocop-rspec', '~> 1.33.0', require: false
+  gem 'rubocop-rails'
 end
 
 group :test do
+  gem 'rspec'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
