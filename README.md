@@ -1,4 +1,6 @@
 # README
+For send emails allow https://myaccount.google.com/lesssecureapps
+=======
 
 admin:
   login: admin@admin.com

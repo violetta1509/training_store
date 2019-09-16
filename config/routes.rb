@@ -1,3 +1,24 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
+                                    sessions: 'users/sessions',
+                                    registrations: 'users/registrations' }
+  ActiveAdmin.routes(self)
+
+  root 'main_page#homepage'
+
+  resources :order_items, only: %i[create update destroy]
+  resources :posts
+  resources :books, only: %i[show index]
+  resources :reviews, only: :create
+  resources :pages
+  resources :orders, only: :index
+  resources :coupons, only: :update
+  resource :checkout_step, only: %i[show update]
+  resource :cart, only: :show
+
+  get 'settings' => 'users#edit'
+  patch 'settings' => 'users#update'
+  patch 'coupons' => 'coupons#update'
+  patch 'order_items' => 'order_items#update'
 end

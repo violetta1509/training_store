@@ -24,13 +24,14 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
+  # config.assets.css_compressor = :yui
+  config.assets.js_compressor = Uglifier.new(harmony: true)
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
-
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
@@ -39,7 +40,19 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
+  config.action_mailer.default_url_options = { host: 'https://b00kst0re.herokuapp.com/' }
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    address:                  "smtp.gmail.com",
+    port:                     587,
+    domain:                   "b00kst0re.herokuapp.com",
+    authentication:           "plain",
+    enable_starttls_auto:     true,
+    user_name:                ENV['GMAIL_SMTP_USER'],
+    password:                 ENV['GMAIL_SMTP_PASSWORD']
+  }
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
@@ -61,7 +74,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "Book--store_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "Book_store_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
 
@@ -71,7 +84,7 @@ Rails.application.configure do
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
-  config.i18n.fallbacks = true
+  config.i18n.fallbacks = [I18n.default_locale]
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
@@ -91,4 +104,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.read_encrypted_secrets = true
+
 end

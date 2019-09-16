@@ -11,6 +11,11 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
+//= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require_tree
+//= require rails.validations
+//= require rails.validations.simple_form
+//= require rails.validations.simple_form.bootstrap4

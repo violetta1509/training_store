@@ -1,0 +1,40 @@
+%main.container
+  %h1.general-title-margin
+    = t(:'catalog.title')
+  .hidden-xs.clearfix
+    .dropdowns.pull-right
+      .dropdown.width-240
+        = render partial: 'books/partials/dropdown_filters', locals: { filter: @current_filter, category: @category }
+    %ul.list-inline.pt-10.mb-25.mr-240
+      %li.mr-35
+        = link_to books_path, class: 'filter-link' do
+          = t(:'catalog.all_categories')
+          %span.badge.general-badge
+            = all_books_quantity
+      - categories.each do |category|
+        %li.mr-35
+          = link_to books_path(category: category), class: 'filter-link' do
+            = category.title
+            %span.badge.general-badge
+              = category.books.count
+  .dropdowns.mb-25.visible-xs
+    %p.lead.small.mb-10
+      = t(:'catalog.categories_title_xs')
+    .dropdown
+      %a.dropdown-toggle.lead.small{'data-toggle': 'dropdown', role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+        = @current_filter
+        %i.fa.fa-angle-down.dropdown-icon.pull-right
+      %ul.dropdown-menu
+        - categories.each do |category|
+          %li
+            = link_to books_path(filter: category), class: 'filter-link' do
+              = category.title
+    %p.lead.small.mb-10
+      = t(:'catalog.filters_title_xs')
+    .dropdown
+      = render partial: 'books/partials/dropdown_filters', locals: { filter: @current_filter, category: @category }
+  .mb-120
+    .row
+      = render partial: 'books/partials/preview', id: 'books', locals: { books: @books }
+    .text-center
+      = link_to t(:view_more), pagy_url_for(@pagy.next, @pagy), class: 'btn btn-primary', remote: true, id: 'view_more' if @pagy.next
