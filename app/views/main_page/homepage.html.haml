@@ -1,16 +1,16 @@
 %main.container
-  #slider.carousel.slide{'data-ride': "carousel"}
+  #slider.carousel.slide{'data-ride': 'carousel'}
     %ol.carousel-indicators
       %li.active{'data-target': "#slider", 'data-slide-to': "0"}
       %li{'data-target': "#slider", 'data-slide-to': "1"}
       %li{'data-target': "#slider", 'data-slide-to': "2"}
-    .carousel-inner{role: "listbox"}
+    .carousel-inner{role: 'listbox'}
       - @new_books.each_with_index do |book, index|
-        .item{ class: ("active" if index == 0) }
+        .item{ class: ('active' if index.zero?) }
           .row
             .col-sm-5
               .general-img-wrap
-                = image_tag( book.image_name, alt: "design-book", class: "img-shadow general-thumbnail-img")
+                = image_tag( book_cover(book), alt: "design-book", class: "img-shadow general-thumbnail-img")
             .col-sm-7
               .mb-60
                 %h1
@@ -38,9 +38,9 @@
     .mb-res-50
       %p
         = t('homepage.middle_part.info')
-    = link_to 'Get Started', books_path, class:"btn btn-default"
+    = link_to I18n.t('homepage.middle_part.start_btn'), books_path, class:"btn btn-default"
   .mb-35
     %h3
-      = t('homepage.best_sellers.title')
+      = t('homepage.best_sellers.title') if @best_sellers.present?
     .row
-      = render partial: 'books/partials/book', collection: @best_sellers, as: :book
+      = render partial: 'main_page/partias/bestseller', collection: @best_sellers, as: :book

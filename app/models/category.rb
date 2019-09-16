@@ -1,3 +1,6 @@
 class Category < ApplicationRecord
-  has_many :books
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
+  has_many :books, dependent: :destroy
 end

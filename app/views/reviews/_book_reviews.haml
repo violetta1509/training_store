@@ -3,10 +3,10 @@
   %h3.in-gold-500.mb-25
     = t(:'review.reviews_title', amount: book.reviews_quantity)
   - book.all_reviews.each do |review|
-    - if review.status == 'unapproved'
+    - if review.approved?
       .general-message-wrap.divider-lg
         .clearfix
-          = image_tag(book.image_name, alt: 'user-img', class: 'img-circle logo-size inlide-block pull-left')
+          = image_tag(book_cover(review.book), alt: 'user-img', class: 'img-circle logo-size inlide-block pull-left')
           .ml-70
             %div
               .general-message-date.hidden-xs
@@ -16,14 +16,12 @@
                     year: review.created_at.year.to_s.last(2))
               .max-240
                 - if user_signed_in?
-                  .general-message-verified
-                    Verified Reviewer
-                .general-message-name
-                  = ReviewPresenter.new(review.user_id).take_user.email
+                  .general-message-name
+                    = ReviewPresenter.new.display_email(current_user, review)
             .mb-15
               - review.score.times do
                 %i.fa.fa-star.rate-star
-              - (book.stars.max - review.score).times do
+              - (BookDecorator::RAITING_STARS.max - review.score).times do
                 %i.fa.fa-star.rate-star.rate-empty
             %p
               = review.body

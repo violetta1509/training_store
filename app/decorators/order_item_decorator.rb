@@ -1,15 +1,5 @@
 class OrderItemDecorator < Draper::Decorator
   delegate_all
 
-  MINIMUM_QUONTITY = 1
-
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
-
+  MINIMUM_QUANTITY = 1
 end

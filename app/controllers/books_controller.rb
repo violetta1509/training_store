@@ -1,28 +1,28 @@
 class BooksController < ApplicationController
   BOOKS_PER_PAGE = 12
   include Pagy::Backend
-  before_action :default_selection, only: :index
-  before_action :set_header
+  before_action :selection, only: :index
   decorates_assigned :book
+  load_and_authorize_resource
 
   def index
-    @pagy, @books = pagy(GetBooksByCategoryService.new(@current_category, @current_filter).call, items: BOOKS_PER_PAGE)
+    @pagy, @books = pagy(query_books.books_sort(@current_filter), items: BOOKS_PER_PAGE)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
-  def show
-    @book = Book.find_by(id: params[:id])
-  end
+  def show; end
 
   private
 
-  def set_header
-    @header = HeaderPresenter.new(self)
+  def query_books
+    BooksQuery.new(@books, @category)
   end
 
-  def default_selection
-    @current_filter = SelectionByFilterService.new(params[:selection]).call
-    @book_presenter = BookPresenter.new(self)
-    @categories = Category.all
-    @current_category = params[:category]
+  def selection
+    @current_filter = FilterService.new.call(params[:selection])
+    @category = params[:category]
   end
 end

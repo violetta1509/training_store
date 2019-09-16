@@ -10,13 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_073143) do
+ActiveRecord::Schema.define(version: 2019_09_10_204816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "city"
+    t.string "zip"
+    t.string "country"
+    t.string "phone"
+    t.string "type"
+    t.boolean "use_billing_address", default: false
+    t.string "addressable_type"
+    t.bigint "addressable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+  end
+
   create_table "authors", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,7 +52,6 @@ ActiveRecord::Schema.define(version: 2019_05_09_073143) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.float "price"
-    t.string "image_name"
     t.string "description"
     t.integer "quantity"
     t.integer "sold"
@@ -43,7 +60,18 @@ ActiveRecord::Schema.define(version: 2019_05_09_073143) do
     t.float "depth"
     t.string "material"
     t.integer "publication_year"
+    t.string "slug"
     t.index ["category_id"], name: "index_books_on_category_id"
+    t.index ["slug"], name: "index_books_on_slug", unique: true
+  end
+
+  create_table "books_authors", force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_books_authors_on_author_id"
+    t.index ["book_id"], name: "index_books_authors_on_book_id"
   end
 
   create_table "catalogs", force: :cascade do |t|
@@ -55,6 +83,44 @@ ActiveRecord::Schema.define(version: 2019_05_09_073143) do
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.string "key"
+    t.integer "value", default: 1
+    t.boolean "active", default: true
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_coupons_on_order_id"
+  end
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "number", null: false
+    t.integer "cvv", null: false
+    t.string "name", null: false
+    t.string "expiry_date", null: false
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_credit_cards_on_order_id"
+  end
+
+  create_table "delivery_services", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price", precision: 7, scale: 2
+    t.integer "from_days"
+    t.integer "to_days"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "image"
+    t.bigint "book_id"
+    t.index ["book_id"], name: "index_images_on_book_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -70,16 +136,16 @@ ActiveRecord::Schema.define(version: 2019_05_09_073143) do
   create_table "orders", force: :cascade do |t|
     t.text "status"
     t.bigint "user_id"
+    t.bigint "coupon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "total", default: 0.0
+    t.bigint "delivery_service_id"
+    t.text "checkout", default: "address"
+    t.text "number"
+    t.index ["coupon_id"], name: "index_orders_on_coupon_id"
+    t.index ["delivery_service_id"], name: "index_orders_on_delivery_service_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -91,6 +157,7 @@ ActiveRecord::Schema.define(version: 2019_05_09_073143) do
     t.bigint "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "verified"
     t.index ["book_id"], name: "index_reviews_on_book_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
@@ -98,6 +165,7 @@ ActiveRecord::Schema.define(version: 2019_05_09_073143) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.boolean "admin", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -107,10 +175,15 @@ ActiveRecord::Schema.define(version: 2019_05_09_073143) do
     t.string "uid"
     t.string "name"
     t.text "image"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "images", "books"
   add_foreign_key "order_items", "books"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"

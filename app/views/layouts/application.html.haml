@@ -10,8 +10,8 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-  =render 'layouts/partials/header'
-  .container
-    =render 'layouts/partials/flash_message'
-  = yield
-  =render 'layouts/partials/footer'
+    =render partial: 'layouts/partials/header'
+    .container
+      =render partial: 'layouts/partials/flash_message'
+    = yield
+    =render partial: 'layouts/partials/footer'

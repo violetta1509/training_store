@@ -1,34 +1,52 @@
 class OrderItemsController < ApplicationController
+  authorize_resource
+
   def create
-    order_item = CreateOrderItemService.new.call(get_current_order, order_item_params)
-    order_item ? set_flash(order_item) : save_guest
+    user_signed_in? ? add_item_to_order : save_guest
 
     redirect_to books_path
   end
 
-  private
+  def update
+    current_user ? HandleOrderItemsService.new.update(order_item_params, current_order) : add_item_to_session
 
-  def order_item_params
-    params.permit(:quantity, :book_id)
+    redirect_to cart_path
   end
 
-  def set_flash(order_item)
-    order_item.save ? flash[:success] = t(:'order_items.added_to_card') : flash[:danger] = t(:'order_items.disabled_add_to_card')
+  def destroy
+    current_user ? HandleOrderItemsService.new.destroy(order_item_params[:id], current_order) : move_from_session
+
+    redirect_to cart_path
+  end
+
+  private
+
+  def move_from_session
+    session[:guest_items].delete(params[:id])
+  end
+
+  def add_item_to_session
+    session[:guest_items][params[:book_id]] = order_item_params[:value]
+  end
+
+  def order_item_params
+    params.permit(:quantity, :book_id, :value, :id)
+  end
+
+  def add_item_to_order
+    flash[:success] = t('order_items.added_to_card') if CreateOrderItemService.new.call(current_order.id, order_item_params)
   end
 
   def save_guest
-    session[:guest] ||= []
-    session[:guest] << { id: params[:book_id], quantity: params[:quantity] }
+    session[:guest_items] ||= {}
+    session[:guest_items][params[:book_id]] = update_item
   end
 
-  def get_current_order
-    return unless user_signed_in?
-
-    session[:order_id] = create_order.id unless session[:order_id]
-    Order.find_by(id: session[:order_id])
+  def update_item
+    session[:guest_items]&.key?(params[:book_id]) ? update_session : params[:quantity]
   end
 
-  def create_order
-    Order.create(user_id: current_user.id)
+  def update_session
+    (session[:guest_items][params[:book_id]].to_i + params[:quantity].to_i).to_s
   end
 end

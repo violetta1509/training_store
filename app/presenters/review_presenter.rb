@@ -1,5 +1,5 @@
-class ReviewPresenter < ApplicationPresenter
-  def take_user
-    User.find_by(id: subject)
+class ReviewPresenter
+  def display_email(user, review)
+    review.verified ? (user.email + I18n.t('review.verified')) : user.email
   end
 end

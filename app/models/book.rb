@@ -1,17 +1,14 @@
 class Book < ApplicationRecord
-  has_and_belongs_to_many :authors
+  extend FriendlyId
 
-  belongs_to :category
+  friendly_id :title, use: %i[finders slugged]
+
+  has_many :books_authors, dependent: :destroy
+  has_many :images, dependent: :destroy
+  has_many :authors, through: :books_authors
   has_many :order_items, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :orders, through: :order_items
 
-  scope :selection_by_order, -> (order_filter) { public_send(order_filter) }
-
-  scope :created_at_desc, -> () { order('created_at DESC') }
-  scope :popular_desc, -> () { order('sold DESC') }
-  scope :price_asc, -> () { order('price ASC') }
-  scope :price_desc, -> () { order('price DESC') }
-  scope :title_asc, -> () { order('title ASC') }
-  scope :title_desc, -> () { order('title DESC') }
-  scope :best_sellers, -> () { order('sold DESC') }
+  belongs_to :category
 end

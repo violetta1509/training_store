@@ -1,7 +1,3 @@
 - flash.each do |name, message|
-  - if name == 'alert'
-    %div(class="alert alert-#{name} text-center alert-danger")
-      = message
-  - else
-    %div(class="alert alert-#{name} text-center alert-success")
-      = message
+  %div.alert.text-center{ class: "alert-#{name} #{alert_class(name)}" }
+    = message

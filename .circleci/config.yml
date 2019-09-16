@@ -1,50 +1,49 @@
-
-# Ruby CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-ruby/ for more details
-#
 version: 2
 jobs:
   build:
+    working_directory: ~/repo
     docker:
-      # specify the version you desire here
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
-          PGHOST: localhost
-          PGUSER: bookstore
+          BUNDLER_VERSION: 2.0.1
           RAILS_ENV: test
-      - image: postgres:11.3
+      - image: postgres:11.3-alpine
         environment:
+          RAILS_ENV: test
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: bookstore_test
-
-    working_directory: ~/repo
+          POSTGRES_PASSWORD: 'postgres'
+          POSTGRES_DB: book_store_test
 
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-
       - run:
           name: install dependencies
           command: |
+            gem install bundler -v 2.0.1
             bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
+      - run:
+          name: Install Chromedriver latest version
+          command: |
+            sudo apt-get update
+            sudo apt-get install lsb-release libappindicator3-1
+            curl -L -o google-chrome.deb https://www.slimjet.com/chrome/download-chrome.php?file=files%2F75.0.3770.80%2Fgoogle-chrome-stable_current_amd64.deb
+            sudo dpkg -i google-chrome.deb
+            sudo sed -i 's|HERE/chrome"|HERE/chrome" --no-sandbox|g' /opt/google/chrome/google-chrome
+            rm google-chrome.deb
       - run:
           name: Set up DB
           command: |
-            bundle exec rake db:create db:schema:load --trace
+            bundle exec rake db:create
             bundle exec rake db:migrate
+
       - run:
           name: run tests
           command: |
@@ -54,7 +53,16 @@ jobs:
                             --out /tmp/test-results/rspec.xml \
                             --format progress \
                             $TEST_FILES
-      # collect reports
+      - run:
+          name: run rubopcop
+          command: bundle exec rubocop
+      - run:
+          name: run rails best practices
+          command: bundle exec rails_best_practices .
+      - run:
+          name: run fasterer
+          command: bundle exec fasterer
+
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:

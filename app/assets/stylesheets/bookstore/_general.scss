@@ -3,9 +3,26 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+.invalid-feedback {
+  color: red;
+}
+
 .images {
   padding: 10px;
 }
+
+.minimize {
+    width: 120px;
+    height: 220px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.height-600 {
+  height: 600px;
+}
+
 .minimized {
   width: 120px;
   height: 60px;

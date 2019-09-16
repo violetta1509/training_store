@@ -1,14 +1,10 @@
 class BookDecorator < Draper::Decorator
   delegate_all
-  DESCRIPTION_IN_RANGE = 100
+  SHORT_DESCRIPTION_LENGTH = 100
   RAITING_STARS = (1..5).to_a.reverse
 
   def short_description
-    description.first(DESCRIPTION_IN_RANGE)
-  end
-
-  def stars
-    RAITING_STARS
+    description.first(SHORT_DESCRIPTION_LENGTH)
   end
 
   def reviews_quantity
@@ -16,10 +12,10 @@ class BookDecorator < Draper::Decorator
   end
 
   def all_reviews
-    @reviews ||= reviews
+    @all_reviews ||= reviews
   end
 
   def authors_all
-    book.authors.map(&:name).join(', ')
+    authors.map(&:full_name).join(', ')
   end
 end

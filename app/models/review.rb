@@ -1,21 +1,22 @@
 class Review < ApplicationRecord
   include AASM
 
-  enum status: {
-    unapproved: 0,
-    approved: 1
-  }
+  belongs_to :user
+  belongs_to :book
 
-  aasm :status, column: :status do
+  validates :book_id, presence: true
+  validates :user_id, presence: true
+
+  aasm column: :status do
     state :unapproved, initial: true
     state :approved
 
     event :to_approve do
       transitions from: :unapproved, to: :approved
     end
+
+    event :to_unapprove do
+      transitions from: :approved, to: :unapproved
+    end
   end
-
-  scope :unapproved, -> { where(status: 'unapproved') }
-  scope :approved, -> { where(status: 'approved') }
-
 end
