@@ -8,11 +8,9 @@ Rails.application.routes.draw do
   root 'main_page#homepage'
 
   resources :order_items, only: %i[create update destroy]
-  resources :posts
   resources :books, only: %i[show index]
   resources :reviews, only: :create
-  resources :pages
-  resources :orders, only: :index
+  resources :orders, only: %i[index show]
   resources :coupons, only: :update
   resource :checkout_step, only: %i[show update]
   resource :cart, only: :show

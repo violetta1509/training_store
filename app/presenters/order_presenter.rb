@@ -1,4 +1,4 @@
-class OrderPresenter
+class OrderPresenter < ShortAddressPresenter
   attr_reader :orders, :filter
 
   def initialize(orders, filter)

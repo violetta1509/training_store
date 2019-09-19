@@ -23,9 +23,12 @@ class SummaryService
 
   def total(subtotal, coupon_value, order = nil)
     total = subtotal > coupon_value ? (subtotal - coupon_value).round(2) : subtotal
-    if order
-      return (total + order.delivery_service.price).round(2) if order.delivery_service
-    end
+    total = order_total(total, order) if order
+    total.round(2)
+  end
+
+  def order_total(total, order)
+    total = + order.delivery_service.price unless order.address?
     total
   end
 end

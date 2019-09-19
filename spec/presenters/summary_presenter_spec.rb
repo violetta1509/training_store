@@ -21,7 +21,7 @@ describe SummaryPresenter do
     end
   end
 
-  describe '#total_order' do
+  describe '#total_order'  do
     context 'when call total_order' do
       context 'when order in payment' do
         let!(:order_with_coupon) { create(:order, :with_coupon) }
@@ -51,14 +51,29 @@ describe SummaryPresenter do
           allow(subject).to receive(:subtotal_order).and_return(subtotal)
         end
 
-        context 'when coupon > subtotal' do
-          let(:subtotal) { coupon - 1 }
-          it { expect(subject.total_order).to eq(with_delivery_price) }
+        context 'when order without address' do
+          context 'when coupon > subtotal' do
+            let(:subtotal) { coupon - 1 }
+            it { expect(subject.total_order).to eq(subtotal) }
+          end
+
+          context 'when coupon < subtotal' do
+            let(:subtotal) { coupon + 1 }
+            it { expect(subject.total_order).to eq(subtotal - coupon) }
+          end
         end
 
-        context 'when coupon < subtotal' do
-          let(:subtotal) { coupon + 1 }
-          it { expect(subject.total_order).to eq(with_delivery_price - coupon) }
+        context 'when order alredy get an address' do
+          before { order_without_coupon.to_delivery }
+          context 'when coupon > subtotal' do
+            let(:subtotal) { coupon - 1 }
+            it { expect(subject.total_order).to eq(with_delivery_price) }
+          end
+
+          context 'when coupon < subtotal' do
+            let(:subtotal) { coupon + 1 }
+            it { expect(subject.total_order).to eq(with_delivery_price - coupon) }
+          end
         end
       end
     end

@@ -66,7 +66,7 @@ DeliveryService.create(name: 'Ukr post', price: 28.5, from_days: 5, to_days: 7)
   )
 end
 
-13.times do
+16.times do
   book = Book.create!(title: BOOKS_TITELS[rand(0..13)],
                       price: BOOKS_PRICE[rand(0..13)],
                       description: "Tenetur est et voluptate sit. Quae dicta ipsa at quibusdam.
@@ -94,12 +94,14 @@ Book.all.each do |book_cur|
   end
 end
 
-User.create!(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin: true)
+user = User.new(email: 'admin@admin.com', password: 'qweqwe', password_confirmation: 'qweqwe', admin: true)
+user.skip_confirmation!
+user.save
 User.create!(email: 'user@usergmail.com ', password: 'qwerty1234', password_confirmation: 'qwerty1234', admin: false)
 
 if Rails.env.development?
   require 'ffaker'
-  30.times do
+  16.times do
     book = Book.create!(title: FFaker::Book.title,
                         price: FFaker::PhoneNumber.area_code / 100.00,
                         description: FFaker::Lorem.paragraph(10),

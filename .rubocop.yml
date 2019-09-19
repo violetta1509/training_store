@@ -26,6 +26,9 @@ Style/TrailingCommaInArrayLiteral:
 Bundler/OrderedGems:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 RSpec/MultipleExpectations:
   Enabled: false
 

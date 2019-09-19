@@ -5,6 +5,10 @@ module BooksHelper
     book.images.first_or_initialize.image.url
   end
 
+  def user_cover(user)
+    user.image
+  end
+
   def categories
     Category.all
   end

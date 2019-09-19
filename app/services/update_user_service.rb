@@ -10,7 +10,7 @@ class UpdateUserService
   end
 
   def update_password(params, user)
-    return unless user.update_with_password(password_params(params))
+    user.update_with_password(password_params(params))
   end
 
   def email_params(params)

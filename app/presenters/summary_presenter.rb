@@ -8,7 +8,10 @@ class SummaryPresenter < StatusLinePresenter
   end
 
   def total_order
-    subtotal_order > coupon_order ? (subtotal_order - coupon_order).round(2) : subtotal_order
+    total = subtotal_order > coupon_order ? (subtotal_order - coupon_order).round(2) : subtotal_order
+    total += @order.delivery_service.price unless @order.address?
+
+    total.round(2)
   end
 
   def right_position?(current_order)

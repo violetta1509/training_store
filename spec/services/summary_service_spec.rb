@@ -5,7 +5,7 @@ RSpec.describe SummaryService do
   let(:guest_items) { {} }
   let(:coupon) { create(:coupon, order: nil) }
   let(:current_order) { user.orders.in_progress.first }
-  let(:total) { current_order.total + current_order.delivery_service.price }
+  let(:total) { current_order.total }
 
   subject(:service) { described_class.new }
 

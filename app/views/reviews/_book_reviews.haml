@@ -6,7 +6,7 @@
     - if review.approved?
       .general-message-wrap.divider-lg
         .clearfix
-          = image_tag(book_cover(review.book), alt: 'user-img', class: 'img-circle logo-size inlide-block pull-left')
+          = image_tag(user_cover(review.user), alt: 'user-img', class: 'img-circle logo-size inlide-block pull-left')
           .ml-70
             %div
               .general-message-date.hidden-xs

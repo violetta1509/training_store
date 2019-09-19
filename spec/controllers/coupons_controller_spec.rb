@@ -16,7 +16,7 @@ RSpec.describe CouponsController, type: :controller do
       end
 
       it 'alert apply coupon' do
-        expect(flash[:danger]).to eq(I18n.t('cart.disabled_coupon'))
+        expect(flash[:notice]).to eq(I18n.t('cart.eneble_coupon'))
       end
 
       it 'redirect to cart' do

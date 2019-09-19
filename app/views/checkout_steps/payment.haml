@@ -16,7 +16,7 @@
       .col-sm-3
         .relative
           = f.input :cvv, as: :password, label: t('checkout.payment.cvv'), placeholder: t('checkout.payment.cvv')
-          %i.fa.fa-question-circle.general-form-help.cvv-motation{ "data-placement" => "bottom", "data-toggle" => "tooltip", title: I18n.t('payment.allow_digits') }
+          %i.fa.fa-question-circle.general-form-help.cvv-motation{ "data-placement" => "bottom", "data-toggle" => "tooltip", title: I18n.t('checkout.payment.allow_digits') }
     .general-text-align
       = render partial: 'checkout_steps/partials/summary', locals: { presenter: @presenter }
     .text-center

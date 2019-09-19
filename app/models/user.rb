@@ -19,6 +19,7 @@ class User < ApplicationRecord
       user.password = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
       user.name = auth.info.name
       user.image = auth.info.image
+      user.skip_confirmation!
     end
   end
 end

@@ -7,10 +7,6 @@ class BooksController < ApplicationController
 
   def index
     @pagy, @books = pagy(query_books.books_sort(@current_filter), items: BOOKS_PER_PAGE)
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def show; end

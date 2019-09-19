@@ -1,5 +1,3 @@
 = I18n.t('devise.hello', email: @user.email)
 
-= I18n.t('mailer.confirm_order')
-
-\#{link_to "confirm", ENV['CONFIRM_ORDER_URL']}
+= I18n.t('mailer.confirm_order', number: @order.number)
