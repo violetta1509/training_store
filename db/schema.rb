@@ -74,27 +74,12 @@ ActiveRecord::Schema.define(version: 2019_09_10_204816) do
     t.index ["book_id"], name: "index_books_authors_on_book_id"
   end
 
-  create_table "catalogs", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["slug"], name: "index_categories_on_slug", unique: true
-  end
-
-  create_table "coupons", force: :cascade do |t|
-    t.string "key"
-    t.integer "value", default: 1
-    t.boolean "active", default: true
-    t.bigint "order_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_coupons_on_order_id"
   end
 
   create_table "credit_cards", force: :cascade do |t|
@@ -169,15 +154,15 @@ ActiveRecord::Schema.define(version: 2019_09_10_204816) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
     t.string "name"
     t.text "image"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

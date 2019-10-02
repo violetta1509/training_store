@@ -66,26 +66,28 @@ DeliveryService.create(name: 'Ukr post', price: 28.5, from_days: 5, to_days: 7)
   )
 end
 
-16.times do
-  book = Book.create!(title: BOOKS_TITELS[rand(0..13)],
-                      price: BOOKS_PRICE[rand(0..13)],
-                      description: "Tenetur est et voluptate sit. Quae dicta ipsa at quibusdam.
-                      Delectus natus incidunt et non est perspiciatis.
-                      Molestiae occaecati dolores architecto odit dolorem. Nostrum ut id tempore culpa similique maiores.
-                      Omnis laboriosam nobis repellat culpa totam iusto facere. Dicta doloremque omnis dolores libero aspernatur
-                      est atque perspiciatis. Sint hic odio error accusamus. Quas aut optio temporibus culpa.
-                      Adipisci quidem corporis eum a vitae rerum aut culpa. Sunt qui doloremque cupiditate at eum.
-                      Illum quis rem voluptatum mollitia et.",
-                      quantity: rand(1..100),
-                      category_id: rand(21..24),
-                      publication_year: Time.zone.now,
-                      material: 'paper',
-                      sold: rand(1..50),
-                      depth: 120,
-                      width: 150,
-                      height: 230)
-  book.authors << Author.all.sample(rand(1..2))
-  book.images.create(remote_image_url: BOOK_IMGS[rand(0..15)])
+if Rails.env.production?
+  16.times do
+    book = Book.create!(title: BOOKS_TITELS[rand(0..13)],
+                        price: BOOKS_PRICE[rand(0..13)],
+                        description: "Tenetur est et voluptate sit. Quae dicta ipsa at quibusdam.
+                        Delectus natus incidunt et non est perspiciatis.
+                        Molestiae occaecati dolores architecto odit dolorem. Nostrum ut id tempore culpa similique maiores.
+                        Omnis laboriosam nobis repellat culpa totam iusto facere. Dicta doloremque omnis dolores libero aspernatur
+                        est atque perspiciatis. Sint hic odio error accusamus. Quas aut optio temporibus culpa.
+                        Adipisci quidem corporis eum a vitae rerum aut culpa. Sunt qui doloremque cupiditate at eum.
+                        Illum quis rem voluptatum mollitia et.",
+                        quantity: rand(1..100),
+                        category_id: rand(21..24),
+                        publication_year: Time.zone.now,
+                        material: 'paper',
+                        sold: rand(1..50),
+                        depth: 120,
+                        width: 150,
+                        height: 230)
+    book.authors << Author.all.sample(rand(1..2))
+    book.images.create(remote_image_url: BOOK_IMGS[rand(0..15)])
+  end
 end
 
 Book.all.each do |book_cur|
@@ -94,9 +96,7 @@ Book.all.each do |book_cur|
   end
 end
 
-user = User.new(email: 'admin@admin.com', password: 'qweqwe', password_confirmation: 'qweqwe', admin: true)
-user.skip_confirmation!
-user.save
+User.create(email: 'admin@admin.com', password: 'qweqwe', password_confirmation: 'qweqwe', admin: true)
 User.create!(email: 'user@usergmail.com ', password: 'qwerty1234', password_confirmation: 'qwerty1234', admin: false)
 
 if Rails.env.development?

@@ -1,6 +1,4 @@
 class OrderItemsController < ApplicationController
-  authorize_resource
-
   def create
     user_signed_in? ? add_item_to_order : save_guest
 
@@ -14,14 +12,14 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
-    current_user ? HandleOrderItemsService.new.destroy(order_item_params[:id], current_order) : move_from_session
+    current_user ? HandleOrderItemsService.new.destroy(order_item_params[:id], current_order) : remove_from_session
 
     redirect_to cart_path
   end
 
   private
 
-  def move_from_session
+  def remove_from_session
     session[:guest_items].delete(params[:id])
   end
 

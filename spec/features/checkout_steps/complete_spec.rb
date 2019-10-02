@@ -1,5 +1,5 @@
 describe 'the complete template' do
-  let(:order) { create(:order, :with_order_items, checkout: CheckoutStepService::VIEW_STEPS[:complete]) }
+  let(:order) { create(:order, :with_order_items, checkout: 'complete') }
   let(:user) { order.user }
   let!(:order_billing_address) { create(:order_billing_address, addressable: order) }
   let!(:order_shipping_address) { create(:order_shipping_address, addressable: order) }

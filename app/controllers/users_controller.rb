@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  authorize_resource
 
   def edit
     @billing_address = current_user.billing_address || BillingForm.new

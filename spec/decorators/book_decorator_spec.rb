@@ -8,7 +8,7 @@ describe BookDecorator do
   end
 
   it 'returns the review cuantity' do
-    expect(book.reviews_quantity).to eq(0)
+    expect(book.reviews.count).to eq(0)
   end
 
   it 'returns authors of the book' do

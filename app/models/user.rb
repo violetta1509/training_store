@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable, :omniauthable, omniauth_providers: [:facebook]
+         :omniauthable, omniauth_providers: [:facebook]
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
@@ -19,7 +19,6 @@ class User < ApplicationRecord
       user.password = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
       user.name = auth.info.name
       user.image = auth.info.image
-      user.skip_confirmation!
     end
   end
 end

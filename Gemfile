@@ -3,15 +3,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 gem 'aasm', '~> 5.0.1'
-gem 'coffee-rails', '~> 4.2'
 gem 'activeadmin', '2.2.0'
 gem 'aws-sdk', '~> 3'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass', '~> 3.3.7'
-gem 'cancancan', '~> 3.0.1'
 gem 'carrierwave', '~> 1.0'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
+gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.6.1'
 gem 'draper', '~> 3.0.1'
 gem 'fog', '~> 2.1.0'
@@ -46,7 +45,6 @@ group :development do
   gem 'brakeman', '~> 4.5.1'
   gem 'fasterer', '~> 0.4.2', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'ordinare'
   gem 'overcommit', '~> 0.48.0'
   gem 'rails_best_practices'
   gem 'rubocop', '0.71.0', require: false

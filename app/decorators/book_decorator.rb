@@ -7,10 +7,6 @@ class BookDecorator < Draper::Decorator
     description.first(SHORT_DESCRIPTION_LENGTH)
   end
 
-  def reviews_quantity
-    all_reviews.approved.count
-  end
-
   def all_reviews
     @all_reviews ||= reviews
   end

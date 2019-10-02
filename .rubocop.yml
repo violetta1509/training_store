@@ -23,9 +23,6 @@ Style/TrailingCommaInArguments:
 Style/TrailingCommaInArrayLiteral:
   Enabled: false
 
-Bundler/OrderedGems:
-  Enabled: false
-
 Style/FrozenStringLiteralComment:
   Enabled: false
 
@@ -61,9 +58,6 @@ Style/UnneededInterpolation:
 Metrics/AbcSize:
   Max: 20
   Exclude:
-    - 'app/presenters/catalog_presenter.rb'
-    - 'app/controllers/users/registrations_controller.rb'
-    - 'app/services/checkout/form_variables_service.rb'
     - 'app/decorators/book_decorator.rb'
 
 RSpec/MessageChain:

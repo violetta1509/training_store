@@ -27,8 +27,6 @@
           = render partial: 'carts/partials/cart_item', locals: {f: f, book: book, quantity: quantity}
   .general-order-wrap
     .row
-      = simple_form_for(@coupon, as: :'discount', url: coupons_path, validate: true, method: :patch) do |f|
-        = render partial: 'carts/partials/coupon', locals: { f: f }
-      .col-sm-8
+      .col-sm-8.pull-right
         = render partial: 'carts/partials/summary'
-        = link_to t('cart.checkout'), checkout_step_path, class: 'btn btn-default mb-20'
+        = link_to t('cart.checkout'), books_path, class: 'btn btn-default mb-20'

@@ -1,3 +1,6 @@
+.col-sm-2
+  .pull-right
+    Filters
 %main.container
   %h1.general-title-margin
     = t(:'catalog.title')
@@ -35,6 +38,6 @@
       = render partial: 'books/partials/dropdown_filters', locals: { filter: @current_filter, category: @category }
   .mb-120
     .row
-      = render partial: 'books/partials/preview', id: 'books', locals: { books: @books }
+      = render partial: 'books/partials/preview', id: 'books', collection: @books, as: :book
     .text-center
       = link_to t(:view_more), pagy_url_for(@pagy.next, @pagy), class: 'btn btn-primary', remote: true, id: 'view_more' if @pagy.next
