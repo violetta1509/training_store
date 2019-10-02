@@ -1,7 +1,4 @@
 # README
-For send emails allow https://myaccount.google.com/lesssecureapps
-=======
-
 admin:
   login: admin@admin.com
   password: password
@@ -9,7 +6,7 @@ admin:
 user:
   login: user@usergmail.com
   password: qwerty1234
- 
+
 coupones:
   #ruby
   #rails

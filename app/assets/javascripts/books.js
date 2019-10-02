@@ -17,6 +17,13 @@ $(document).on('turbolinks:load', function() {
     });
   });
 
+  const
+    xxx = document.querySelector('#xxx'),
+    yyy = document.querySelector('#yyy');
+
+  xxx.oninput = () => yyy.value = xxx.value;
+  yyy.oninput = () => xxx.value = yyy.value;
+
   $('#plus').click(function() {
     let input = $(this).parent().find('.book-quantity-js');
     let quantity = Number(input.val());

@@ -1,43 +1,64 @@
-.col-sm-2
-  .pull-right
-    Filters
 %main.container
-  %h1.general-title-margin
-    = t(:'catalog.title')
-  .hidden-xs.clearfix
-    .dropdowns.pull-right
-      .dropdown.width-240
-        = render partial: 'books/partials/dropdown_filters', locals: { filter: @current_filter, category: @category }
-    %ul.list-inline.pt-10.mb-25.mr-240
-      %li.mr-35
-        = link_to books_path, class: 'filter-link' do
-          = t(:'catalog.all_categories')
-          %span.badge.general-badge
-            = all_books_quantity
-      - categories.each do |category|
+  .col-sm-2
+    .pull-right
+      %h2
+        Filters
+      .range
+        %h2
+          Max price:
+        %form
+          %input#xxx{ max: "100", min: "0", step: "0.1", type: "range", value: "20", name: 'max_price'}/
+          %input#yyy{ type: "text", value: "20"}
+          %input{type: 'submit'}
+      .range
+        %h2
+          Authors:
+        %form
+          - Author.all.each do |author|
+            %input{ name: "author_id", type: "radio", value: author.id, id: author.id }
+            %label{ for: author.id}
+              = author.full_name
+            %br
+          %input{type: 'hidden', name: 'category', value: @category}
+          %p
+            %input{type: 'submit'}
+  .col-sm-10
+    %h1.general-title-margin
+      = t(:'catalog.title')
+    .hidden-xs.clearfix
+      .dropdowns.pull-right
+        .dropdown.width-240
+          = render partial: 'books/partials/dropdown_filters', locals: { filter: @current_filter, category: @category }
+      %ul.list-inline.pt-10.mb-25.mr-240
         %li.mr-35
-          = link_to books_path(category: category), class: 'filter-link' do
-            = category.title
+          = link_to books_path, class: 'filter-link' do
+            = t(:'catalog.all_categories')
             %span.badge.general-badge
-              = category.books.count
-  .dropdowns.mb-25.visible-xs
-    %p.lead.small.mb-10
-      = t(:'catalog.categories_title_xs')
-    .dropdown
-      %a.dropdown-toggle.lead.small{'data-toggle': 'dropdown', role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-        = @current_filter
-        %i.fa.fa-angle-down.dropdown-icon.pull-right
-      %ul.dropdown-menu
+              = all_books_quantity
         - categories.each do |category|
-          %li
-            = link_to books_path(filter: category), class: 'filter-link' do
+          %li.mr-35
+            = link_to books_path(category: category), class: 'filter-link' do
               = category.title
-    %p.lead.small.mb-10
-      = t(:'catalog.filters_title_xs')
-    .dropdown
-      = render partial: 'books/partials/dropdown_filters', locals: { filter: @current_filter, category: @category }
-  .mb-120
-    .row
-      = render partial: 'books/partials/preview', id: 'books', collection: @books, as: :book
-    .text-center
-      = link_to t(:view_more), pagy_url_for(@pagy.next, @pagy), class: 'btn btn-primary', remote: true, id: 'view_more' if @pagy.next
+              %span.badge.general-badge
+                = category.books.count
+    .dropdowns.mb-25.visible-xs
+      %p.lead.small.mb-10
+        = t(:'catalog.categories_title_xs')
+      .dropdown
+        %a.dropdown-toggle.lead.small{'data-toggle': 'dropdown', role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+          = @current_filter
+          %i.fa.fa-angle-down.dropdown-icon.pull-right
+        %ul.dropdown-menu
+          - categories.each do |category|
+            %li
+              = link_to books_path(filter: category), class: 'filter-link' do
+                = category.title
+      %p.lead.small.mb-10
+        = t(:'catalog.filters_title_xs')
+      .dropdown
+        = render partial: 'books/partials/dropdown_filters', locals: { filter: @current_filter, category: @category }
+    .mb-120
+      .row
+        = render partial: 'books/partials/preview', id: 'books', collection: @books, as: :book
+      .text-center
+        = link_to t(:view_more), pagy_url_for(@pagy.next, @pagy), class: 'btn btn-primary', remote: true, id: 'view_more' if @pagy.next

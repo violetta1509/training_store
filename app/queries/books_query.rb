@@ -9,7 +9,7 @@ class BooksQuery
   }.freeze
 
   def initialize(category = false)
-    @books = books_by_category(category)
+    @category = category
   end
 
   def books_sort(filter)
@@ -24,9 +24,15 @@ class BooksQuery
     end
   end
 
-  private
+  def books_by_price(price)
+    @books = Book.where('price < ?', price)
+  end
 
-  def books_by_category(category)
-    category ? Category.friendly.find(category).books : Book.all
+  def books_by_author(author)
+    @books = Author.find_by(id: author).books
+  end
+
+  def books_by_category
+    @books = @category ? Category.friendly.find(@category).books : Book.all
   end
 end
