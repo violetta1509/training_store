@@ -35,4 +35,8 @@ class BooksQuery
   def books_by_category
     @books = @category ? Category.friendly.find(@category).books : Book.all
   end
+
+  def books_untill_date(date)
+    @books = Book.where('publication_year < ?', date.to_time.to_i)
+  end
 end

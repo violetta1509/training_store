@@ -31,9 +31,9 @@
                   = link_to category.title, books_path(category: category.friendly_id)
           - if user_signed_in?
             %li.dropdown
-              %a.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#", role: "button"}
+              %a{ href: '#'}
                 = t('header.account')
-              %ul.dropdown-menu
+              %ul.dropdown-menu.dropdown-content
                 %li
                   = link_to t('header.settings'), settings_path
                 %li.divider{role: "separator"}
@@ -57,9 +57,9 @@
                   = link_to category.title, books_path(category: category.friendly_id)
           - if user_signed_in?
             %li.dropdown
-              %a.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#", role: "button"}
+              %a{ href: '#'}
                 = t('header.account')
-              %ul.dropdown-menu
+              %ul.dropdown-menu.dropdown-content
                 %li
                   = link_to t('header.settings'), settings_path
                 %li.divider{role: "separator"}

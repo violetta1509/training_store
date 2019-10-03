@@ -6,7 +6,7 @@ module BooksHelper
   end
 
   def user_cover(user)
-    user.image || ActionController::Base.helpers.asset_path('user/default.png')
+    user.image.url
   end
 
   def categories

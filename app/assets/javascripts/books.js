@@ -17,12 +17,18 @@ $(document).on('turbolinks:load', function() {
     });
   });
 
-  const
-    xxx = document.querySelector('#xxx'),
-    yyy = document.querySelector('#yyy');
+  let updateTime = function(){ filters.style.display="block" }
+  setTimeout(updateTime,5000);
+  clearTimeout(updateTime);
 
-  xxx.oninput = () => yyy.value = xxx.value;
-  yyy.oninput = () => xxx.value = yyy.value;
+  $('#xxx').mousedown(function() {
+    const
+      xxx = document.querySelector('#xxx'),
+      yyy = document.querySelector('#yyy');
+
+    xxx.oninput = () => yyy.value = xxx.value;
+    yyy.oninput = () => xxx.value = yyy.value;
+  });
 
   $('#plus').click(function() {
     let input = $(this).parent().find('.book-quantity-js');

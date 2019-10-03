@@ -11,9 +11,16 @@ class UsersController < ApplicationController
     update_shipping_address if params.include?('shipping_address')
     update_email if params.include?('email_form')
     update_password if params.include?('password_form')
+    update_avatar if params.include?('avatar')
   end
 
   private
+
+  def update_avatar
+    current_user.image = params[:avatar][:image]
+    current_user.save
+    redirect_to settings_path
+  end
 
   def update_email
     assign_flash(UpdateUserService.new.call(params, current_user), I18n.t('quick_registration.autocomplete_email'))

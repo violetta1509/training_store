@@ -95,6 +95,9 @@ en:
     review: 'Write a Review'
     score: 'Score'
   filters:
+    authors: 'Authors:'
+    title: 'Filters:'
+    max_price: 'Max price:'
     created_at_desc: 'Newest first'
     popular_desc: 'Popular first'
     title_asc: 'Title A-Z'
@@ -111,6 +114,7 @@ en:
     saved_comment: 'Your comment will be show after review'
     wrong_comment: 'Your comment has not been saved'
   settings:
+    avatar: 'Update avatar'
     confirm_password: 'Confirm Password'
     title: 'Settings'
     adress_tag: 'Address'

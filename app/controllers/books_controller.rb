@@ -15,6 +15,6 @@ class BooksController < ApplicationController
   end
 
   def books_params
-    params.permit(:author_id, :max_price, :category, :selection)
+    params.permit(:author_id, :max_price, :category, :selection, :calendar)
   end
 end
