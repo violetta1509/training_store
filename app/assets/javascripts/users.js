@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function () {
   $( "#delete_account").click(function () { return false; });
 
   $("#enable_button").click(function () {
-    if (this.checked && confirm("Press a button!")) {
+    if (this.checked && confirm('Your profile will be permanently deleted')) {
       $("#delete_account").removeClass("disabled");
       $("#delete_account").off('click');
     } else {

@@ -7,32 +7,13 @@ user:
   login: user@usergmail.com
   password: qwerty1234
 
-coupones:
-  #ruby
-  #rails
-  RUDOLFSDEAL
-  LITTLELEARNERS
-  BACK2SCHOOL
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  Select radio buttons - in filters
+  Select date from the calendar - in filters
+  Select data from dropdown - in header
+  Working with sorting on the table - in filters
+  Upload image/avatar - in user settings
+  Delete with a confirmation pop up - in settings, when delete account
+  Edit data and verify changes - in settings
+  Scroll to the visible button, field, etc. - on main page
+  Wait until something - filters are shown 5 seconds after page loading
+  Hover - when hover 'my account' in header
