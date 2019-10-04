@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.6.4'
 gem 'aasm', '~> 5.0.1'
 gem 'activeadmin', '2.2.0'
 gem 'aws-sdk', '~> 3'
@@ -23,7 +23,6 @@ gem 'mini_magick', '~> 4.9.3'
 gem 'omniauth-facebook', '~> 5.0.0'
 gem 'pagy', '~> 2.0.0'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'presenter-rails', '~> 1.0.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2'
 gem 'sass-rails', '~> 5.0'
@@ -31,7 +30,6 @@ gem 'sekrets', '~> 1.11.0'
 gem 'simple_form', '~> 4.0.1'
 gem 'turbolinks', '~> 5.2.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'virtus', '~> 1.0.5'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

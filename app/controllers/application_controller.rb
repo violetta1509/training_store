@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   def current_order
     Order.where(user_id: current_user.id).in_progress.first_or_create do |order|
       order.user_id = current_user.id
-      order.delivery_service_id = DeliveryService.first.id
     end
   end
 
