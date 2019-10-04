@@ -2,7 +2,6 @@ FactoryBot.define do
   factory :user do
     email { FFaker::Internet.email }
     password { 'Faker121word' }
-    after(:create, &:confirm)
 
     trait :with_order do
       after(:create) do |user|

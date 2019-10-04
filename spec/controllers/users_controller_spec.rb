@@ -117,7 +117,7 @@ RSpec.describe UsersController, type: :controller do
         user.build_billing_address
       end
 
-      it 'update billing attributes ' do
+      it 'update billing attributes' do
         expect { subject }.to change { controller.current_user.billing_address }
       end
 

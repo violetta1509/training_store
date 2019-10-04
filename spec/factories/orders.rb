@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :order do
     association :user
-    association :delivery_service
     total { 10 }
     status { Order.aasm(:status).states.first.name }
     checkout { Order.aasm(:checkout).states.first.name }

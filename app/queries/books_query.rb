@@ -10,6 +10,7 @@ class BooksQuery
 
   def initialize(category = false)
     @category = category
+    @books = Book.all
   end
 
   def books_sort(filter)

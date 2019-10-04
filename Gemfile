@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.4'
+ruby '2.5.1'
 gem 'aasm', '~> 5.0.1'
 gem 'activeadmin', '2.2.0'
 gem 'aws-sdk', '~> 3'
@@ -30,6 +30,7 @@ gem 'sekrets', '~> 1.11.0'
 gem 'simple_form', '~> 4.0.1'
 gem 'turbolinks', '~> 5.2.0'
 gem 'uglifier', '>= 1.3.0'
+gem 'virtus', '~> 1.0.5'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -54,7 +55,6 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '~> 3.22.0'
   gem 'factory_bot_rails', '~> 5.0.1'
   gem 'rack_session_access'
   gem 'rails-controller-testing', '~> 1.0.4'
@@ -62,7 +62,6 @@ group :test do
   gem 'selenium-webdriver', '~> 3.141'
   gem 'shoulda-matchers'
   gem 'simplecov', '~> 0.16.1'
-  gem 'webdrivers', '~> 4.0'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
