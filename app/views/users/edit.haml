@@ -54,7 +54,7 @@
               = f.button :submit, t('settings.save'), wrapper_html: { class: 'general-text-align btn btn-default mb-35' }
           %p.in-gold-500.font-18.mb-25.pt-30
             =t('settings.avatar')
-            = simple_form_for(current_user, as: :avatar, url: settings_url, method: :patch,
+            = simple_form_for(current_user, as: :upload_image, url: settings_url, method: :patch,
               defaults: { wrapper_html: { class: 'form-group mb-35 general-form-md' },
               label_html: { class: 'control-label input-label' } }) do |f|
               = f.input :image, as: :file, input_html: { onchange: 'readURL(this)' }

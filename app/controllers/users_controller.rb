@@ -7,17 +7,22 @@ class UsersController < ApplicationController
   end
 
   def update
-    update_billing_address if params.include?('billing_address')
-    update_shipping_address if params.include?('shipping_address')
     update_email if params.include?('email_form')
     update_password if params.include?('password_form')
-    update_avatar if params.include?('avatar')
+    upload_image if params.include?('upload_image')
+    update_address
   end
 
   private
 
-  def update_avatar
-    current_user.image = params[:avatar][:image]
+  def update_address
+    update_billing_address if params.include?('billing_address')
+    update_shipping_address if params.include?('shipping_address')
+  end
+
+  def upload_image
+    image = current_user.user_images.create(image: params[:upload_image][:image])
+    current_user.avatar = image.image_url
     current_user.save
     redirect_to settings_path
   end

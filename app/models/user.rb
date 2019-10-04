@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  mount_uploader :image, AvatarUploader
+  # mount_uploader :image, AvatarUploader
 
+  has_many :user_images, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
@@ -20,7 +21,7 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
       user.name = auth.info.name
-      user.image = auth.info.image
+      user.avatar = auth.info.image
     end
   end
 end

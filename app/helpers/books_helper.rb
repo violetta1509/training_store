@@ -6,7 +6,7 @@ module BooksHelper
   end
 
   def user_cover(user)
-    user.image.url
+    user.avatar
   end
 
   def categories
