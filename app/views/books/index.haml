@@ -1,34 +1,45 @@
 %main.container
-  .col-sm-2
-    .pull-right#filters{hidden: true}
-      %h2
+  .col-sm-2.p-0
+    .pull-right#filters
+      %h1.mg-0.mb-60
         = I18n.t('filters.title')
       .range
-        %h2
-          = I18n.t('filters.max_price')
         %form
-          %input#xxx{ max: "100", min: "0", step: "0.1", type: "range", value: "20", name: 'max_price'}/
-          %input#yyy{ type: "text", value: "20", readonly: true}
-          %input{type: 'submit'}
-      .range
-        %h2
-          = I18n.t('filters.authors')
-        %form
-          - Author.all.each do |author|
-            %input{ name: "author_id", type: "radio", value: author.id, id: author.id }
-            %label{ for: author.id}
-              = author.full_name
+          .filter-link
+            = I18n.t('filters.max_price')
+            %input.pull-right#yyy{ type: "text", value: @price, readonly: true}
+          %input.slider#xxx{ max: BooksQuery::MAX_PRICE, min: BooksQuery::MIN_PRICE, step: BooksQuery::RUNNER_STEP, type: "range", value: @price, name: 'max_price'}/
+          .filter-link.mt-20
+            = I18n.t('filters.categories')
+          %br
+            - categories.each do |category|
+              %label.authors-side-filter.font-weight-light.pl-0{ for: category.id}
+                %input.radio-input{ hidden: true, name: "category", type: "radio", value: category.id, id: category.id, checked: @category.to_i == category.id ? true : false }
+                  %span.radio-icon#icon
+                  = category.title
+              %br
+          %br
+            .filter-link
+              = I18n.t('filters.authors')
             %br
-          %input{type: 'hidden', name: 'category', value: @category}
-          %p
-            %input{type: 'submit'}
+              %fieldset
+                - Author.all.each do |author|
+                  %label.font-weight-light.pl-0.authors-side-filter.d-block
+                    = author.full_name
+                    %input.checkbox-input{ type: "checkbox",checked: @authors.include?(author.id.to_s) ? true : false, hidden: "true", name: "author_ids[]", value: author.id }
+                    %span.checkbox-icon.pull-right
+                      %i.fa.fa-check
+            %br
+              .filter-link
+                = I18n.t('filters.date')
+                %input.text-center{"data-provide": "datepicker", value: @calendar, 'data-date-format': "yyyy/mm/dd", type: "text", name: 'calendar'}
+            .text-center.mt-20
+              %input.btn.btn-primary.w-100{type: 'submit', value: 'search'}
+
       .range
         .try-display-in-seconds
           %form
             %p
-              Книги, опубликованые до :
-              %input{ name: "calendar", type: "date"}
-              %input{ type: "submit", value: "Отправить"}
   .col-sm-10
     %h1.general-title-margin
       = t(:'catalog.title')

@@ -67,7 +67,7 @@ DeliveryService.create(name: 'Ukr post', price: 28.5, from_days: 5, to_days: 7)
 end
 
 if Rails.env.production?
-  16.times do
+  15.times do
     book = Book.create!(title: BOOKS_TITELS[rand(0..13)],
                         price: BOOKS_PRICE[rand(0..13)],
                         description: "Tenetur est et voluptate sit. Quae dicta ipsa at quibusdam.
@@ -78,7 +78,7 @@ if Rails.env.production?
                         Adipisci quidem corporis eum a vitae rerum aut culpa. Sunt qui doloremque cupiditate at eum.
                         Illum quis rem voluptatum mollitia et.",
                         quantity: rand(1..100),
-                        category_id: rand(21..24),
+                        category_id: rand(1..4),
                         publication_year: Time.zone.now,
                         material: 'paper',
                         sold: rand(1..50),
@@ -96,7 +96,7 @@ Book.all.each do |book_cur|
   end
 end
 
-User.create(email: 'admin@admin.com', password: 'qweqwe', password_confirmation: 'qweqwe', admin: true)
+User.create(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin: true)
 User.create!(email: 'user@usergmail.com ', password: 'qwerty1234', password_confirmation: 'qwerty1234', admin: false)
 
 if Rails.env.development?

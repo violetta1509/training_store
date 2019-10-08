@@ -2,6 +2,11 @@
 
 @import "variables";
 
+#yyy {
+  border: none;
+  width: 20%;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -9,6 +14,16 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+}
+
+.authors-side-filter {
+  font-size: 14px;
+  word-break: break-word;
+  font-weight: normal;
+}
+
+label.d-block {
+  display: block;
 }
 
 .dropdown-content a {
@@ -441,17 +456,54 @@
   font-weight: 300;
   padding-left: 0;
 }
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #c59c71;
+    cursor: pointer;
+}
+
 .checkbox-icon {
   $size: 24px;
   width: $size;
   height: $size;
-  font-size: 10px;
+  font-size: 14px;
   color: white;
   line-height: $size;
   text-align: center;
   display: inline-block;
   border: 1px solid $grey-350;
   margin-right: 15px;
+  margin-left: 15px;
+}
+
+label + .authors-side-filter {
+  display: block;
+}
+
+.col-sm-2 {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
 }
 .checkbox-input:checked + .checkbox-icon {
   background-color: $gold-500;
@@ -464,9 +516,11 @@
   padding-left: 0;
 }
 .radio-icon {
-  $size: 24px;
+  @extend .fa;
+  $size: 20px;
   width: $size;
   height: $size;
+  color: white;
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -474,25 +528,22 @@
   border-radius: 50%;
   margin-right: 10px;
   margin-bottom: 5px;
-  &:after {
-    content: '';
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: $grey-900;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
+  text-align: center;
+  &:before {
+    line-height: $size - 2px;
   }
 }
+
+input[type="radio"] {
+  margin: 0px 0px 0px 0px;
+}
+
 .radio-input:checked + .radio-icon {
-  background-color: transparent;
-  border-color: $grey-900;
-  &:after {
-    opacity: 1;
+  background-color: #c59c71;
+  border-color: #a7a796;
+  &:before {
+    border: none;
+    @extend .fa-check;
   }
 }
 .tab-item {
@@ -540,7 +591,9 @@
     }
   }
   .shop-link {
-    margin-right: 0;
+    padding: 0px 0px 0px 0px;
+    margin: 15px 15px;
+    position: relative;
   }
   .navbar-nav .open .dropdown-menu {
     box-shadow: 0 5px 18px 2px rgba(1, 1, 1, 0.03);

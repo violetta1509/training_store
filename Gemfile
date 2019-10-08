@@ -6,6 +6,7 @@ gem 'aasm', '~> 5.0.1'
 gem 'activeadmin', '2.2.0'
 gem 'aws-sdk', '~> 3'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'carrierwave', '~> 1.0'
 gem 'client_side_validations'

@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
+//= require bootstrap-datepicker
 //= require_tree
 //= require rails.validations
 //= require rails.validations.simple_form

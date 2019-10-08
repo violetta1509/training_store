@@ -7,11 +7,23 @@ class BooksQuery
     price_asc: I18n.t('filters.price_asc'),
     price_desc: I18n.t('filters.price_desc')
   }.freeze
+  MAX_PRICE = 50
+  MIN_PRICE = 0
+  RUNNER_STEP = 0.1
 
-  def initialize(category = false)
-    @category = category
+  def initialize
     @books = Book.all
   end
+
+  def call(params, sort_filter)
+    books_by_author(params[:author_ids]) if params.include?(:author_ids)
+    books_by_category(params[:category]) if params.include?(:category)
+    books_by_price(params[:max_price]) if params.include?(:max_price)
+    books_untill_date(params[:calendar]) if params.include?(:calendar)
+    books_sort(sort_filter)
+  end
+
+  private
 
   def books_sort(filter)
     case filter
@@ -26,18 +38,19 @@ class BooksQuery
   end
 
   def books_by_price(price)
-    @books = Book.where('price < ?', price)
+    @books = @books.where('price < ?', price)
   end
 
-  def books_by_author(author)
-    @books = Author.find_by(id: author).books
+  def books_by_author(author_ids)
+    book_ids = BooksAuthor.where(author_id: author_ids).map { |entity| entity.book.id }.uniq
+    @books = Book.where(id: book_ids)
   end
 
-  def books_by_category
-    @books = @category ? Category.friendly.find(@category).books : Book.all
+  def books_by_category(category)
+    @books = @books.where(category_id: category) if category
   end
 
   def books_untill_date(date)
-    @books = Book.where('publication_year < ?', date.to_time.to_i)
+    @books = @books.where('publication_year < ?', date.to_time.to_i)
   end
 end

@@ -96,6 +96,8 @@ en:
     review: 'Write a Review'
     score: 'Score'
   filters:
+    categories: 'Categories:'
+    date: 'Publication untill date'
     authors: 'Authors:'
     title: 'Filters:'
     max_price: 'Max price:'
