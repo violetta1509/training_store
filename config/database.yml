@@ -14,7 +14,6 @@ test:
   <<: *default
   database: book_store_test
 
-
 production:
   <<: *default
   database: book_store_production
