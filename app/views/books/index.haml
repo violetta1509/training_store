@@ -77,6 +77,7 @@
         = render partial: 'books/partials/dropdown_filters', locals: { filter: @current_filter, category: @category }
     .mb-120
       .row
-        = render partial: 'books/partials/preview', id: 'books', collection: @books, as: :book
+        = render partial: 'books/partials/not_find_books' if @books.empty?
+        = render partial: 'books/partials/preview', id: 'books', collection: @books, as: :book if @books.present?
       .text-center
         = link_to t(:view_more), pagy_url_for(@pagy.next, @pagy), class: 'btn btn-primary', remote: true, id: 'view_more' if @pagy.next

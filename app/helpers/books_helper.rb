@@ -9,6 +9,10 @@ module BooksHelper
     user.avatar || ActionController::Base.helpers.asset_path('user/default.png')
   end
 
+  def no_books_image
+    ActionController::Base.helpers.asset_path('fallback/no_books.jpg')
+  end
+
   def categories
     Category.all
   end

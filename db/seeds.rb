@@ -59,10 +59,10 @@ AUTHORS_LAST_NAME = %w[
 DeliveryService.create(name: 'Novaposhta', price: 18.25, from_days: 3, to_days: 5)
 DeliveryService.create(name: 'Ukr post', price: 28.5, from_days: 5, to_days: 7)
 
-4.times do
+ AUTHORS_FIRST_NAME.each_with_index do |first, index|
   Author.create!(
-    first_name: AUTHORS_FIRST_NAME[rand(0..3)],
-    last_name: AUTHORS_LAST_NAME[rand(0..3)]
+    first_name: first,
+    last_name: AUTHORS_LAST_NAME[index]
   )
 end
 
@@ -90,12 +90,6 @@ if Rails.env.production?
   end
 end
 
-Book.all.each do |book_cur|
-  4.times do
-    book_cur.images.create(remote_image_url: EXTEND_BOOK_IMAGES[rand(0..3)])
-  end
-end
-
 User.create(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin: true)
 User.create!(email: 'user@usergmail.com ', password: 'qwerty1234', password_confirmation: 'qwerty1234', admin: false)
 
@@ -112,6 +106,18 @@ if Rails.env.development?
                         depth: FFaker::PhoneNumber.area_code,
                         width: FFaker::PhoneNumber.area_code,
                         height: FFaker::PhoneNumber.area_code)
+    book.authors << Author.all.sample(rand(1..2))
+  end
+end
+
+Book.all.each do |book_cur|
+  4.times do
+    book_cur.images.create(remote_image_url: EXTEND_BOOK_IMAGES[rand(0..3)])
+  end
+end
+
+Book.all.each do |book|
+  2.times do
     book.authors << Author.all.sample(rand(1..2))
   end
 end

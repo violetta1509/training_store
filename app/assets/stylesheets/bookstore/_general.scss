@@ -4,6 +4,22 @@ body {
   min-height: 100vh;
 }
 
+#no_books {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.d-inline {
+  display: inline-block;
+}
+
+.pt-100 {
+  margin-top: 10px;
+}
+
 .w-100 {
   width: 100%;
 }
