@@ -96,6 +96,9 @@ en:
     review: 'Write a Review'
     score: 'Score'
   filters:
+    publication_in_range: 'Publication in range'
+    all_books: 'All books'
+    can_not_find_books: 'Can`t find books'
     categories: 'Categories:'
     date: 'Publication untill date'
     authors: 'Authors:'

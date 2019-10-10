@@ -18,28 +18,17 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
+  ev.dataTransfer.setData("avatar_id", ev.target.getAttribute('value'));
 }
 
 function drop(ev) {
   ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
+  var data = ev.dataTransfer.getData("avatar_id");
+  const input = document.getElementById('user_avatar');
+  input.value = data;
+  $("#avatar_form").submit();
 }
 
 if (!window.hasOwnProperty( 'avatar' )) {
   const avatar = document.getElementById('avatar');
 };
-
-var submitBtn = document.getElementById('update_avatar');
-
-if (submitBtn) {
-  submitBtn.addEventListener('click', assign_avatar_id);
-}
-
-function assign_avatar_id(e) {
-  if (avatar) {
-    const input = document.getElementById('user_avatar');
-    input.value = avatar.children[0].children[0].getAttribute('id');
-  }
-}

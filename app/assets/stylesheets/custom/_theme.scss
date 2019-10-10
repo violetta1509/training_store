@@ -7,6 +7,28 @@
   width: 20%;
 }
 
+#filter_btn {
+  background-color: #c59c71;
+  color: white;
+}
+
+#view_more {
+  background-color: #c59c71;
+  color: white;
+}
+
+#daterange {
+  color: inherit;
+}
+
+main {
+  position: relative;
+}
+
+.avatar {
+  cursor: pointer;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;

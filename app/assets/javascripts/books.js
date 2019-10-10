@@ -21,6 +21,7 @@ $(document).on('turbolinks:load', function() {
   // setTimeout(updateTime,5000);
   // clearTimeout(updateTime);
 
+
   $('#xxx').mousedown(function() {
     const
       xxx = document.querySelector('#xxx'),

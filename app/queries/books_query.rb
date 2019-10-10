@@ -19,11 +19,25 @@ class BooksQuery
     books_by_author(params[:author_ids]) if params.include?(:author_ids)
     books_by_category(params[:category]) if params.include?(:category)
     books_by_price(params[:max_price]) if params.include?(:max_price)
-    books_untill_date(params[:calendar]) if params.include?(:calendar)
+    books_by_publication_date(params)
     books_sort(sort_filter)
   end
 
   private
+
+  def books_by_publication_date(params)
+    books_in_range_date(params[:date_range]) if params.include?(:date_range) && select_from_range?(params)
+    books_untill_date(params[:untill_date]) if params.include?(:untill_date) && !select_from_range?(params)
+  end
+
+  def select_from_range?(params)
+    params[:date_range].split(' - ').all? { |date| date.to_date != Time.zone.now.to_date }
+  end
+
+  def books_in_range_date(range)
+    books_untill_date(range.split(' - ')[1])
+    books_untill_date(range.split(' - ')[0], '>')
+  end
 
   def books_sort(filter)
     case filter
@@ -50,7 +64,7 @@ class BooksQuery
     @books = @books.where(category_id: category) if category
   end
 
-  def books_untill_date(date)
-    @books = @books.where('publication_year < ?', date.to_time.to_i)
+  def books_untill_date(date, sign = '<')
+    @books = @books.where('publication_year ' + sign + ' ?', date.to_time.to_i)
   end
 end

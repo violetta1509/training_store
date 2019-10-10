@@ -8,7 +8,7 @@
           .filter-link
             = I18n.t('filters.max_price')
             %input.pull-right#yyy{ type: "text", value: @price, readonly: true}
-          %input.slider#xxx{ max: BooksQuery::MAX_PRICE, min: BooksQuery::MIN_PRICE, step: BooksQuery::RUNNER_STEP, type: "range", value: @price, name: 'max_price'}/
+          %input.slider#xxx{ max: @maximum_price, min: @minimum_price, step: BooksQuery::RUNNER_STEP, type: "range", value: @price, name: 'max_price'}/
           .filter-link.mt-20
             = I18n.t('filters.categories')
           %br
@@ -26,16 +26,19 @@
                 - Author.all.each do |author|
                   %label.font-weight-light.pl-0.authors-side-filter.d-block
                     = author.full_name
-                    %input.checkbox-input{ type: "checkbox",checked: @authors.include?(author.id.to_s) ? true : false, hidden: "true", name: "author_ids[]", value: author.id }
+                    %input.checkbox-input{ type: "checkbox",checked: @authors.include?(author.id.to_s) ? true : false, hidden: true, name: 'author_ids[]', value: author.id }
                     %span.checkbox-icon.pull-right
                       %i.fa.fa-check
             %br
               .filter-link
                 = I18n.t('filters.date')
-                %input.text-center{"data-provide": "datepicker", value: @calendar, 'data-date-format': "yyyy/mm/dd", type: "text", name: 'calendar'}
-            .text-center.mt-20
-              %input.btn.btn-primary.w-100{type: 'submit', value: 'search'}
 
+                %input.text-center{"data-provide": "datepicker", id: 'untill_date', value: @untill_date, 'data-date-format': "dd/mm/yyyy", type: 'text', name: 'untill_date'}
+              .filter-link
+                = I18n.t('filters.publication_in_range')
+                %input{  id: 'daterange', data: { behavior: 'daterangepicker' }, value: @date_range, name: 'date_range', class: ' text-center' }
+              .text-center.mt-20
+                %input.btn.w-100#filter_btn{type: 'submit', value: 'search'}
       .range
         .try-display-in-seconds
           %form
@@ -80,4 +83,4 @@
         = render partial: 'books/partials/not_find_books' if @books.empty?
         = render partial: 'books/partials/preview', id: 'books', collection: @books, as: :book if @books.present?
       .text-center
-        = link_to t(:view_more), pagy_url_for(@pagy.next, @pagy), class: 'btn btn-primary', remote: true, id: 'view_more' if @pagy.next
+        = link_to t(:view_more), pagy_url_for(@pagy.next, @pagy), class: 'btn', remote: true, id: 'view_more' if @pagy.next

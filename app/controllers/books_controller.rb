@@ -13,17 +13,24 @@ class BooksController < ApplicationController
   end
 
   def books_params
-    params.permit(:author_ids, :max_price, :category, :selection, :calendar)
+    params.permit(:date_range, :max_price, :category, :selection, :untill_date)
   end
 
   private
 
   def assign_variables
-    @price = books_params[:max_price] || 50
+    assign_date_variables
+    @maximum_price ||= Book.maximum(:price)
+    @minimum_price ||= Book.minimum(:price)
+    @price = books_params[:max_price] || @maximum_price
     @authors = params[:author_ids] || []
     @category = books_params[:category]
     sort_filter = books_params[:selection]
-    @calendar = books_params[:calendar] || Time.zone.now.strftime('%Y/%d/%m').to_s
     @current_filter = BooksQuery::FILTERS.values.include?(sort_filter) ? sort_filter : BooksQuery::FILTERS[:created_at_desc]
+  end
+
+  def assign_date_variables
+    @date_range = books_params[:date_range]
+    @untill_date = books_params[:untill_date] || Time.zone.now.strftime('%m/%d/%Y').to_s
   end
 end

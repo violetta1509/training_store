@@ -59,7 +59,7 @@ AUTHORS_LAST_NAME = %w[
 DeliveryService.create(name: 'Novaposhta', price: 18.25, from_days: 3, to_days: 5)
 DeliveryService.create(name: 'Ukr post', price: 28.5, from_days: 5, to_days: 7)
 
- AUTHORS_FIRST_NAME.each_with_index do |first, index|
+AUTHORS_FIRST_NAME.each_with_index do |first, index|
   Author.create!(
     first_name: first,
     last_name: AUTHORS_LAST_NAME[index]
