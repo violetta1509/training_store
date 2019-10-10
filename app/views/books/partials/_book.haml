@@ -16,7 +16,7 @@
       .col-xs-12.col-md-4
         %p.h1.in-gold-500.mt-10
           =t(:'book.price', price: book.price)
-      .col-xs-5.col-md-3
+      .col-xs-5.col-md-3#book_quantity{hidden: true}
         .input-group.general-position
           %a.input-link.pt-7#minus
             %i.fa.fa-minus.line-height-40
@@ -24,7 +24,7 @@
           = form.text_field :quantity, value: 1, class: "form-control quantity-input book-quantity-js"
           %a.input-link.pt-7#plus
             %i.fa.fa-plus.line-height-40
-      .col-xs-7.col-md-5
+      .col-xs-7.col-md-5.pull-right
         = form.submit I18n.t('book.add_to_card'), class: "btn btn-default pull-right general-position"
   .general-info-wrap.divider-lg
     %p

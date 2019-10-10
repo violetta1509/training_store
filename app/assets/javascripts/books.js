@@ -17,9 +17,9 @@ $(document).on('turbolinks:load', function() {
     });
   });
 
-  // let updateTime = function(){ filters.style.display="block" }
-  // setTimeout(updateTime,5000);
-  // clearTimeout(updateTime);
+  let updateTime = function(){ book_quantity.style.display="block" }
+  setTimeout(updateTime,5000);
+  clearTimeout(updateTime);
 
 
   $('#xxx').mousedown(function() {

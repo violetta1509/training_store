@@ -32,7 +32,6 @@
             %br
               .filter-link
                 = I18n.t('filters.date')
-
                 %input.text-center{"data-provide": "datepicker", id: 'untill_date', value: @untill_date, 'data-date-format': "dd/mm/yyyy", type: 'text', name: 'untill_date'}
               .filter-link
                 = I18n.t('filters.publication_in_range')
