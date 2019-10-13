@@ -2,7 +2,7 @@ class OrderItemsController < ApplicationController
   def create
     user_signed_in? ? add_item_to_order : save_guest
 
-    redirect_to books_path
+    redirect_to request.headers['HTTP_REFERER']
   end
 
   def update

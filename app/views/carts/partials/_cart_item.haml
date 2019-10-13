@@ -10,10 +10,10 @@
       = t('book.price', price: book.price)
   %td
     .input-group
-      = link_to order_items_path(book_id: book.id, value: quantity.to_i - 1), remote: true, method: :patch, class: 'input-link minus' do
+      = link_to order_items_path(book_id: book.id, value: quantity.to_i - 1), remote: true, method: :patch, class: 'input-link minus-book' do
         %i.fa.fa-minus.line-heaght-40
       = f.text_field :quantity, name: book.id, value: "#{quantity}",remote: true, min: 1, readonly: true, class: 'form-control quantity-input book-quantity-js'
-      = link_to order_items_path(book_id: book.id, value: quantity.to_i + 1), method: :patch, class: 'input-link plus' do
+      = link_to order_items_path(book_id: book.id, value: quantity.to_i + 1), method: :patch, class: 'input-link plus-book' do
         %i.fa.fa-plus.line-heaght-40
   %td
     %span.font-16.in-gold-500.items_total_price

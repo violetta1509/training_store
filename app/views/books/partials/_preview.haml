@@ -5,8 +5,8 @@
       .thumb-hover
         .general-thumb-link-wrap
           = link_to book_path(book), class: 'thumb-hover-link' do
-            %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-          = link_to order_items_path(book_id: book.id, quantity: OrderItemDecorator::MINIMUM_QUANTITY), remote: true, method: :post, class: 'thumb-hover-link' do
+            %i.fa.fa-eye.thumb-icon{ 'aria-hidden': 'true' }
+          = link_to order_items_path(book_id: book.id, quantity: OrderItemDecorator::MINIMUM_QUANTITY), method: :post, remote: false, class: 'by_book_link thumb-hover-link' do
             %i.fa.fa-shopping-cart.thumb-icon
   .general-thumb-info
     %p.title

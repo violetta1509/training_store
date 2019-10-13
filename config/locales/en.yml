@@ -117,9 +117,10 @@ en:
     btn_name: 'Post'
     reviews_title: 'Reviews (%{amount})'
     date_review: "%{day}/%{month}/%{year}"
-    saved_comment: 'Your comment will be show after review'
+    saved_comment: 'Your comment saved'
     wrong_comment: 'Your comment has not been saved'
   settings:
+    avatar_icons: 'Available avatar icons'
     avatar: 'Update avatar'
     confirm_password: 'Confirm Password'
     title: 'Settings'

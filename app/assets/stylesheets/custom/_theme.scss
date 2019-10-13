@@ -7,6 +7,10 @@
   width: 20%;
 }
 
+#read-more {
+  cursor: pointer;
+}
+
 #filter_btn {
   background-color: #c59c71;
   color: white;
@@ -15,6 +19,10 @@
 #view_more {
   background-color: #c59c71;
   color: white;
+}
+
+.res-mr-200 {
+    margin-right: 0px !important;
 }
 
 #daterange {
@@ -333,7 +341,7 @@ label.d-block {
 }
 
 .user-size {
-  width: 200px;
+  width: 150px;
   height: 150px;
 }
 

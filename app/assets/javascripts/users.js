@@ -13,6 +13,16 @@ $(document).on('turbolinks:load', function () {
   });
 });
 
+$(".spinner").hide();
+
+$(document).ajaxStart(function(){
+  $(".spinner").show();
+});
+
+$(document).ajaxStop(function(){
+  $(".spinner").hide();
+});
+
 function allowDrop(ev) {
   ev.preventDefault();
 }

@@ -5,7 +5,7 @@
     = t(:'book.score')
   .row
     .col-md-8
-      = form_with url: reviews_path, method: :post do |form|
+      = form_for Review.new, method: :post do |form|
         = form.hidden_field :book, value: book.slug
         = form.hidden_field :book_id, value: book.id
         = form.hidden_field :user_id, value: current_user.id

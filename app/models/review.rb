@@ -6,6 +6,8 @@ class Review < ApplicationRecord
 
   validates :book_id, presence: true
   validates :user_id, presence: true
+  validates :body, presence: true
+  validates :title, presence: true
 
   aasm column: :status do
     state :unapproved, initial: true

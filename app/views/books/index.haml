@@ -4,7 +4,7 @@
       %h1.mg-0.mb-60
         = I18n.t('filters.title')
       .range
-        %form
+        %form{ remote: true }
           .filter-link
             = I18n.t('filters.max_price')
             %input.pull-right#yyy{ type: "text", value: @price, readonly: true}
@@ -31,11 +31,11 @@
                       %i.fa.fa-check
             %br
               .filter-link
-                = I18n.t('filters.date')
-                %input.text-center{"data-provide": "datepicker", id: 'untill_date', value: @untill_date, 'data-date-format': "dd/mm/yyyy", type: 'text', name: 'untill_date'}
-              .filter-link
                 = I18n.t('filters.publication_in_range')
-                %input{  id: 'daterange', data: { behavior: 'daterangepicker' }, value: @date_range, name: 'date_range', class: ' text-center' }
+                %input.text-center{ name: "date_range", id: 'calendar_range', type: "text", value: @date_range }
+              .filter-link
+                = I18n.t('filters.date')
+                %input.text-center{"data-provide": "datepicker", id: 'untill_date', value: @untill_date, 'data-date-format': "yyyy/mm/dd", type: 'text', name: 'untill_date'}
               .text-center.mt-20
                 %input.btn.w-100#filter_btn{type: 'submit', value: 'search'}
       .range

@@ -26,7 +26,6 @@
         - @items.each do |book, quantity|
           = render partial: 'carts/partials/cart_item', locals: {f: f, book: book, quantity: quantity}
   .general-order-wrap
-    .row
-      .col-sm-8.pull-right
-        = render partial: 'carts/partials/summary'
-        = link_to t('cart.checkout'), books_path, class: 'btn btn-default mb-20'
+    .row.text-center
+      = render partial: 'carts/partials/summary'
+      = link_to t('cart.checkout'), books_path, class: 'btn btn-default mb-20'

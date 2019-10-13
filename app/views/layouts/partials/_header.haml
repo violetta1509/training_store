@@ -32,7 +32,7 @@
           - if user_signed_in?
             %li.dropdown
               %a{ href: '#'}
-                = t('header.account')
+                = current_user.email
               %ul.dropdown-menu.dropdown-content
                 %li
                   = link_to t('header.settings'), settings_path
@@ -58,7 +58,7 @@
           - if user_signed_in?
             %li.dropdown
               %a{ href: '#'}
-                = t('header.account')
+                = current_user.email
               %ul.dropdown-menu.dropdown-content
                 %li
                   = link_to t('header.settings'), settings_path

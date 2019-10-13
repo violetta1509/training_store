@@ -9,9 +9,11 @@
         = form_with  url: settings_url, method: :patch, id: 'avatar_form', remote: true do |f|
           = f.hidden_field :new_avatar, value: nil, id: 'user_avatar'
           = f.button 'update avatar', hidden: true
+        .spinner
+
     .col-sm-4.text-center
       %h3.general-subtitle.mt-0
-        Avatar icons
+        = I18n.t('settings.avatar_icons')
       %br
       - current_user.user_images.each do |image|
         = image_tag(image.image_url, height: "69", ondragstart: "drag(event)", alt: 'user-img', id: 'avatar_icon', value: image.id, draggable: true, class: 'img-circle user-image-size inlide-block avatar')
@@ -41,7 +43,7 @@
             defaults: { input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' },
             label_html: { class: 'control-label input-label' } }, validate: true do |billing|
             = render partial: 'address/form_address', locals: { f: billing, type: 'billing_address' }
-            = billing.button :submit, t('settings.save'), wrapper_html: { class: 'text-center general-text-align'}, input_html: { class: 'btn' }
+            = billing.button :submit, t('settings.save'), wrapper_html: { class: 'text-center general-text-align'}, input_html: { class: 'btn btn-default' }
         .col-md-5.col-md-offset-1.mb-25
           .visible-xs.visible-sm
             %h3.general-subtitle.mt-0
@@ -50,7 +52,7 @@
             defaults: { input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' },
             label_html: { class: 'control-label input-label' } }) do |shipping|
             = render partial: 'address/form_address', locals: { f: shipping, type: 'shipping_address' }
-            = shipping.button :submit, t('settings.save'), wrapper_html: { class: 'text-center general-text-align'}, input_html: { class: 'btn' }
+            = shipping.button :submit, t('settings.save'), wrapper_html: { class: 'text-center general-text-align'}, input_html: { class: 'btn btn-default' }
     #privacy.tab-pane.fade(role="tabpanel")
       .row.mb-60
         .col-sm-5
@@ -77,7 +79,7 @@
             = f.input :current_password, required: true, label: t('settings.old_password'), placeholder: t('settings.old_password')
             = f.input :password, required: true, label: t('settings.new_password'), placeholder: t('settings.new_password')
             = f.input :password_confirmation, required: true, label: t('settings.confirm_password'), placeholder: t('settings.confirm_password')
-            = f.button :submit, t('settings.save'), class: 'btn mb-10', wrapper_html: { class: 'general-text-align' }
+            = f.button :submit, t('settings.save'), class: 'btn btn-default mb-10', wrapper_html: { class: 'general-text-align' }
         .col-sm-12
           %p.in-gold-500.font-18.mb-25
             =t('settings.remove_account')

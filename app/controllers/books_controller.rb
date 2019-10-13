@@ -30,7 +30,9 @@ class BooksController < ApplicationController
   end
 
   def assign_date_variables
-    @date_range = books_params[:date_range]
-    @untill_date = books_params[:untill_date] || Time.zone.now.strftime('%m/%d/%Y').to_s
+    time_now = Time.zone.now.strftime('%Y/%m/%d').to_s
+    @date_range = books_params[:date_range] || time_now + ' ' + time_now
+    @range = books_params[:date_range] || time_now
+    @untill_date = books_params[:untill_date] || time_now
   end
 end

@@ -88,6 +88,12 @@ if Rails.env.production?
     book.authors << Author.all.sample(rand(1..2))
     book.images.create(remote_image_url: BOOK_IMGS[rand(0..15)])
   end
+
+  Book.all.each do |book_cur|
+    4.times do
+      book_cur.images.create(remote_image_url: EXTEND_BOOK_IMAGES[rand(0..3)])
+    end
+  end
 end
 
 User.create(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin: true)
@@ -106,18 +112,6 @@ if Rails.env.development?
                         depth: FFaker::PhoneNumber.area_code,
                         width: FFaker::PhoneNumber.area_code,
                         height: FFaker::PhoneNumber.area_code)
-    book.authors << Author.all.sample(rand(1..2))
-  end
-end
-
-Book.all.each do |book_cur|
-  4.times do
-    book_cur.images.create(remote_image_url: EXTEND_BOOK_IMAGES[rand(0..3)])
-  end
-end
-
-Book.all.each do |book|
-  2.times do
     book.authors << Author.all.sample(rand(1..2))
   end
 end
