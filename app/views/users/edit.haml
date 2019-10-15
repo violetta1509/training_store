@@ -9,8 +9,9 @@
         = form_with  url: settings_url, method: :patch, id: 'avatar_form', remote: true do |f|
           = f.hidden_field :new_avatar, value: nil, id: 'user_avatar'
           = f.button 'update avatar', hidden: true
-        .spinner
-
+      #overlay
+        .cv-spinner
+          %span.spinner
     .col-sm-4.text-center
       %h3.general-subtitle.mt-0
         = I18n.t('settings.avatar_icons')

@@ -13,14 +13,15 @@ $(document).on('turbolinks:load', function () {
   });
 });
 
-$(".spinner").hide();
 
 $(document).ajaxStart(function(){
-  $(".spinner").show();
+  $("#overlay").fadeIn(300);
 });
 
 $(document).ajaxStop(function(){
-  $(".spinner").hide();
+  setTimeout(function(){
+    $("#overlay").fadeOut(300);
+  },500);
 });
 
 function allowDrop(ev) {
