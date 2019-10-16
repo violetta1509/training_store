@@ -65,6 +65,13 @@ $(document).on('turbolinks:load', function() {
     }
   });
 
+  $('#view_more').click(function() {
+    $(this).addClass("disabled");
+    $(document).ajaxStop(function(){
+      $(this).removeClass("disabled")
+    });
+  })
+
   $('#read-more').click(function() {
     let short_desc = $('#short-desc');
     let btn_link = $('#read-more');

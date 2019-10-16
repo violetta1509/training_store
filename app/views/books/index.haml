@@ -37,7 +37,7 @@
                 = I18n.t('filters.date')
                 %input.text-center{"data-provide": "datepicker", id: 'untill_date', value: @untill_date, 'data-date-format': "yyyy/mm/dd", type: 'text', name: 'untill_date'}
               .text-center.mt-20
-                %input.btn.w-100#filter_btn{type: 'submit', value: 'search'}
+                %input.btn.w-100#filter_btn{type: 'submit', value: 'Search'}
       .range
         .try-display-in-seconds
           %form
@@ -82,4 +82,4 @@
         = render partial: 'books/partials/not_find_books' if @books.empty?
         = render partial: 'books/partials/preview', id: 'books', collection: @books, as: :book if @books.present?
       .text-center
-        = link_to t(:view_more), pagy_url_for(@pagy.next, @pagy), class: 'btn', remote: true, id: 'view_more' if @pagy.next
+        = link_to t(:view_more), pagy_url_for(@pagy.next, @pagy), class: 'btn btn-default', remote: true, id: 'view_more' if @pagy.next

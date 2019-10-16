@@ -44,6 +44,7 @@ en:
     can_not_use_account: 'You can`t use this email'
   price: "€ %{price}"
   order_items:
+    empty_cart: 'Cart is empty'
     added_to_card: 'Added to card'
     disabled_add_to_card: 'Cann`t add to card'
   header:

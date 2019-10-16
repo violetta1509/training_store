@@ -5,6 +5,12 @@ class HandleOrderItemsService
   end
 
   def update(params, current_order)
+    update_item(params, current_order) if params[:value].to_i.positive?
+  end
+
+  private
+
+  def update_item(params, current_order)
     current_order.order_items.find_by(book_id: params[:book_id]).update(quantity: params[:value])
     UpdateOrderTotalService.new.call(current_order.id)
   end
