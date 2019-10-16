@@ -41,7 +41,7 @@
       %p.pull-left
         = t(:'book.release')
       %p.lead.small.pull-right
-        = book.publication_year
+        = Time.at(book.publication_year).to_date
   .general-info-wrap.divider-lg
     .clearfix
       %p.pull-left
