@@ -68,6 +68,20 @@ end
 
 if Rails.env.production?
   15.times do
+    book = Book.create!(title: FFaker::Book.title,
+                        price: FFaker::PhoneNumber.area_code / 100.00,
+                        description: FFaker::Lorem.paragraph(10),
+                        quantity: FFaker::PhoneNumber.area_code,
+                        category_id: rand(1..4),
+                        publication_year: FFaker::Time.between('1992-01-01', Time.zone.now),
+                        material: FFaker::LoremPL.word,
+                        depth: FFaker::PhoneNumber.area_code,
+                        width: FFaker::PhoneNumber.area_code,
+                        height: FFaker::PhoneNumber.area_code)
+    book.authors << Author.all.sample(rand(1..2))
+  end
+else
+  6.times do
     book = Book.create!(title: BOOKS_TITELS[rand(0..13)],
                         price: BOOKS_PRICE[rand(0..13)],
                         description: "Tenetur est et voluptate sit. Quae dicta ipsa at quibusdam.
@@ -115,3 +129,4 @@ if Rails.env.development?
     book.authors << Author.all.sample(rand(1..2))
   end
 end
+User.create!(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin: true) if Rails.env.development?
