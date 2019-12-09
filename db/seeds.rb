@@ -110,7 +110,6 @@ else
   end
 end
 
-User.create(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin: true)
 User.create!(email: 'user@usergmail.com ', password: 'qwerty1234', password_confirmation: 'qwerty1234', admin: false)
 
 if Rails.env.development?
