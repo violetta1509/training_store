@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.4'
+ruby '2.6.5'
 gem 'aasm', '~> 5.0.1'
 gem 'activeadmin', '2.2.0'
 gem 'aws-sdk', '~> 3'
@@ -40,7 +40,6 @@ group :development, :test do
   gem 'ffaker', '2.11.0'
   gem 'pry', '~> 0.12.2'
   gem 'pry-rails', '0.3.9'
-  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
@@ -51,20 +50,7 @@ group :development do
   gem 'rails_best_practices'
   gem 'rubocop', '0.71.0', require: false
   gem 'rubocop-rails', '~> 2.0.1'
-  gem 'rubocop-rspec', '~> 1.33.0', require: false
   gem 'spring', '~> 2.0.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
 end
-
-group :test do
-  gem 'factory_bot_rails', '~> 5.0.1'
-  gem 'rack_session_access'
-  gem 'rails-controller-testing', '~> 1.0.4'
-  gem 'rspec', '~> 3.8.0'
-  gem 'selenium-webdriver', '~> 3.141'
-  gem 'shoulda-matchers'
-  gem 'simplecov', '~> 0.16.1'
-end
-
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
