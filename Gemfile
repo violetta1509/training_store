@@ -40,6 +40,14 @@ group :development, :test do
   gem 'ffaker', '2.11.0'
   gem 'pry', '~> 0.12.2'
   gem 'pry-rails', '0.3.9'
+  gem 'rspec-rails'
+  gem 'webdrivers'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
