@@ -941,9 +941,6 @@ GEM
     execjs (2.7.0)
     factory_bot (5.1.1)
       activesupport (>= 4.2.0)
-    factory_bot_rails (5.1.1)
-      factory_bot (~> 5.1.0)
-      railties (>= 4.2.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     fasterer (0.4.2)
@@ -1407,6 +1404,11 @@ GEM
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    site_prism (3.4.1)
+      addressable (~> 2.5)
+      capybara (~> 3.3)
+      site_prism-all_there (~> 0.3)
+    site_prism-all_there (0.3.2)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -1483,7 +1485,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.6.1)
   draper (~> 3.0.1)
-  factory_bot_rails
+  factory_bot
   fasterer (~> 0.4.2)
   ffaker (= 2.11.0)
   fog (~> 2.1.0)
@@ -1510,6 +1512,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sekrets (~> 1.11.0)
   simple_form (~> 4.0.1)
+  site_prism
   spring (~> 2.0.2)
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5.2.0)

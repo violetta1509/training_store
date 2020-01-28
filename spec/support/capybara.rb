@@ -14,6 +14,7 @@ Capybara.register_driver :chrome do |app|
   Capybara::Selenium::Driver.new(
     app,
     browser: :chrome,
+    args: ["--window-size=1024,768"],
     desired_capabilities: capabilities
   )
 end

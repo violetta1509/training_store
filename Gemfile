@@ -42,12 +42,14 @@ group :development, :test do
   gem 'pry-rails', '0.3.9'
   gem 'rspec-rails'
   gem 'webdrivers'
+  gem 'factory_bot'
 end
 
 group :test do
   gem 'capybara'
   gem 'rspec-rails'
-  gem 'factory_bot_rails'
+  gem 'webdrivers'
+  gem 'site_prism'
 end
 
 group :development do
