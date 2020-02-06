@@ -57,7 +57,7 @@
                   = link_to category.title, books_path(category: category.friendly_id)
           - if user_signed_in?
             %li.dropdown
-              %a{ href: '#'}
+              %a.header-user-email-js{ href: '#'}
                 = current_user.email
               %ul.dropdown-menu.dropdown-content
                 %li
