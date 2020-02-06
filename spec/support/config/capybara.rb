@@ -1,23 +1,24 @@
 require 'capybara/rails'
 require 'webdrivers/chromedriver'
 
-Capybara.default_max_wait_time = 10
-Capybara.server = :puma
-Capybara.javascript_driver = :chrome
-Capybara.default_driver = :chrome
-
-logging_preferences = { browser: 'ALL' }
-
 Capybara.register_driver :chrome do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(loggingPrefs: logging_preferences)
-  
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    loggingPrefs: {
+      browser: 'ALL'
+    }
+  )
+
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('window-size=1600,1268')
+
   Capybara::Selenium::Driver.new(
     app,
     browser: :chrome,
-    args: ["--window-size=1024,768"],
-    desired_capabilities: capabilities
+    desired_capabilities: capabilities,
+    options: options
   )
 end
+
 # Capybara.register_driver :headless_chrome do |app|
 #   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
 #     chromeOptions: { args: %w(headless disable-gpu) },
@@ -29,3 +30,8 @@ end
 #     desired_capabilities: capabilities
 #   )
 # end
+
+Capybara.default_max_wait_time = 3
+Capybara.javascript_driver = :chrome
+Capybara.default_driver = :chrome
+Capybara.server = :puma

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :category do
-    title { 'WEB' }
+    title { ['Mobile development', 'Web development', 'Web design', 'Photo'].sample }
     slug { FFaker::Internet.slug }
   end
 end
