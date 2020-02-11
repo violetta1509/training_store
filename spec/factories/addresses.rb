@@ -4,7 +4,7 @@ FactoryBot.define do
     last_name { FFaker::Name.last_name }
     address { FFaker::AddressUS.street_address }
     city { FFaker::AddressUS.city }
-    zip{ FFaker::AddressUS.zip_code }
+    zip{ FFaker::AddressUS.postcode }
     phone { FFaker::PhoneNumber.phone_number }
   end
 end
