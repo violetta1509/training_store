@@ -1494,7 +1494,7 @@ DEPENDENCIES
   draper (~> 3.0.1)
   factory_bot_rails (~> 5.1, >= 5.1.1)
   fasterer (~> 0.4.2)
-  ffaker (~> 2.13)
+  ffaker
   fog (~> 2.1.0)
   font-awesome-rails
   friendly_id (~> 5.2.4)
