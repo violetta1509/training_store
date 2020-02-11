@@ -64,7 +64,7 @@ group :test do
   # https://github.com/thoughtbot/factory_bot_rails
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
   # https://github.com/ffaker/ffaker
-  gem 'ffaker', '~> 2.13'
+  gem 'ffaker'
   # https://github.com/site-prism/site_prism
   gem 'site_prism', '~> 3.4', '>= 3.4.1'
   # https://github.com/rspec/rspec-rails
