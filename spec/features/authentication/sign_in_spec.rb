@@ -20,7 +20,7 @@ RSpec.describe 'SignIn' do
       sign_in_page.login_button.click
 
       expect(home_page).to be_displayed
-      expect(home_page.success_flash.text).to eq('Signed in successfully.')
+      expect(home_page.success_flash.text).to eq(I18n.t('devise.sessions.signed_in'))
       expect(home_page.user_email.text).to eq(user.email)
       expect(home_page).to have_no_sign_up_link
       expect(home_page).to have_no_login_link

@@ -22,7 +22,7 @@ RSpec.describe 'SignUp' do
       sign_up_page.sign_up_button.click
 
       expect(home_page).to be_displayed
-      expect(home_page.success_flash.text).to eq('Welcome! You have signed up successfully.')
+      expect(home_page.success_flash.text).to eq(I18n.t('devise.registrations.signed_up'))
     end
   end
 end

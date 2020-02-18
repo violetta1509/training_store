@@ -16,7 +16,7 @@ RSpec.describe 'Settings' do
       home_page.settings.click
 
       expect(page).to have_current_path('/settings')
-      expect(settings_page.settings_title.text).to include('Settings')
+      expect(settings_page.settings_title.text).to include(I18n.t('settings.title'))
     end
   end
 
@@ -73,8 +73,4 @@ RSpec.describe 'Settings' do
       expect(settings_page.sh_phone).to have_text('')
     end
   end
-
-  context "check the fields' validation" do
-    
-
 end

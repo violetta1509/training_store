@@ -6,9 +6,9 @@ RSpec.describe 'Home' do
     before { visit '/' }
 
     it 'shows no books title' do
-      expect(home_page.filters_title.text).to include('Filters')
-      expect(home_page.catalog_title.text).to include('Catalog')
-      expect(home_page.no_books_title.text).to include('Can`t find books')
+      expect(home_page.filters_title.text).to include(I18n.t('filters.title'))
+      expect(home_page.catalog_title.text).to include(I18n.t('catalog.title'))
+      expect(home_page.no_books_title.text).to include(I18n.t('filters.can_not_find_books'))
     end
   end
 

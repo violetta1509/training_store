@@ -4,7 +4,8 @@ FactoryBot.define do
     last_name { FFaker::Name.last_name }
     address { FFaker::AddressUS.street_address }
     city { FFaker::AddressUS.city }
-    zip{ FFaker::AddressUS.postcode }
+    zip { FFaker::AddressAU.postcode }
+    country { ['Ukraine', 'Germane', 'USA', 'UK'].sample }
     phone { FFaker::PhoneNumber.phone_number }
   end
 end
