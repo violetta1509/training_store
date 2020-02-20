@@ -6,8 +6,8 @@ class HomePage < BasePage
   element :login_link, 'a[href="/users/sign_in"]'
 
   element :user_email, '.header-user-email-js'
-  element :settings, 'a[href="/settings"]'
-  element :logout, 'a[href="/users/sign_out"]'
+  element :settings, '.dropdown:last-child:hover li:first-child a'
+  element :logout, '.dropdown:last-child:hover li:last-child a'
 
   #MAIN PAGE
   element :filters_title, '#filters h1'
@@ -17,5 +17,5 @@ class HomePage < BasePage
 
   element :view_more_button, '#view_more'
 
-  elements :books, '.book_section'
+  elements :books, '.general-thumb-wrap'
 end
